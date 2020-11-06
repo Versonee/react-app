@@ -1,0 +1,59 @@
+.planet-view {
+  background-color: #404040;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbar {
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  transition: 0.7s;
+}
+.navbar.toggle-true {
+  transform: translateX(0px);
+}
+.navbar.toggle-false {
+  transform: translateX(-70px);
+}
+.navbar .nav-container {
+  height: 100%;
+  width: 70px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .nav-container .nav-items .nav-item {
+  font-size: 30px;
+  margin: 40px 0;
+  color: white;
+  transition: 0.4s;
+}
+.navbar .nav-container .nav-items .nav-item:hover {
+  color: orange;
+}
+.navbar .toggle-button {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  background: black;
+  border-bottom-right-radius: 50px;
+  cursor: pointer;
+}
+.navbar .toggle-button .toggle-icon {
+  margin: 8px;
+  color: white;
+  font-size: 25px;
+  transition: 0.7s;
+}
+.navbar .toggle-button .toggle-icon.toggle-true {
+  transform: rotateY(180deg);
+}
+.navbar .toggle-button .toggle-icon.toggle-false {
+  transform: rotateY(0deg);
+}
+
+/*# sourceMappingURL=style.css.map */

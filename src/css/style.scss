@@ -1,0 +1,60 @@
+$background:#404040;
+
+.planet-view{
+  background-color:$background;
+  width:100%;
+  height: 100vh;
+}
+.navbar{
+  position:absolute;
+  height:100vh;
+  left:0;
+  display:flex;
+  flex-direction: row;
+  transition:.7s;
+  &.toggle-true{
+    transform: translateX(0px);
+  }
+  &.toggle-false{
+    transform: translateX(-70px);
+  }
+  .nav-container{
+    height:100%;
+    width:70px;
+    background: black;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    .nav-items{
+      .nav-item{
+        font-size: 30px;
+        margin:40px 0;
+        color:white;
+        transition:.4s;
+        &:hover{
+          color:orange;
+        }
+      }
+    }
+  }
+  .toggle-button{
+    display:flex;
+    width:50px;
+    height:50px;
+    background: black;
+    border-bottom-right-radius: 50px;
+    cursor:pointer;
+    .toggle-icon{
+      margin:8px;
+      color:white;
+      font-size:25px;
+      transition:.7s;
+      &.toggle-true{
+        transform: rotateY(180deg);
+      }
+      &.toggle-false{
+        transform: rotateY(0deg);
+      }
+    }
+  }
+}
