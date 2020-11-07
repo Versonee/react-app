@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MainView from "./MainView";
 import React, {Component} from "react";
 import PlanetView from "./components/PlanetView";
+import './css/style.css'
 
 class App extends Component{
 

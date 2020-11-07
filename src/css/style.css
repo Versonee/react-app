@@ -1,16 +1,175 @@
+body {
+  overflow: hidden;
+}
+
 .planet-view {
-  background-color: #404040;
-  width: 100%;
+  background-color: rgba(255, 255, 255, 0.15);
+  width: 100vw;
   height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.planet-view::-webkit-scrollbar {
+  background: #1f1f1f;
+  height: 10px;
+}
+.planet-view::-webkit-scrollbar-button {
+  display: none;
+}
+.planet-view::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+.planet-view .planet-container {
+  height: 100%;
+  margin: 0 auto;
+  background: #1f1f1f;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.planet-view .planet-container .star {
+  width: 400px;
+  height: 400px;
+  margin-left: -200px;
+  background: #E0440B;
+  border-radius: 50%;
+  position: relative;
+  z-index: 0;
+}
+.planet-view .planet-container .star .orbit {
+  border: dashed 2px rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  position: absolute;
+}
+.planet-view .planet-container .star .orbit:nth-child(1) {
+  width: 780px;
+  height: 780px;
+  top: -193px;
+  left: -193px;
+}
+.planet-view .planet-container .star .orbit:nth-child(2) {
+  width: 1340px;
+  height: 1340px;
+  top: -473px;
+  left: -473px;
+}
+.planet-view .planet-container .star .orbit:nth-child(3) {
+  width: 1900px;
+  height: 1900px;
+  top: -753px;
+  left: -753px;
+}
+.planet-view .planet-container .star .orbit:nth-child(4) {
+  width: 2460px;
+  height: 2460px;
+  top: -1033px;
+  left: -1033px;
+}
+.planet-view .planet-container .star .orbit:nth-child(5) {
+  width: 3020px;
+  height: 3020px;
+  top: -1313px;
+  left: -1313px;
+}
+.planet-view .planet-container .star .orbit:nth-child(6) {
+  width: 3580px;
+  height: 3580px;
+  top: -1593px;
+  left: -1593px;
+}
+.planet-view .planet-container .star .orbit:nth-child(7) {
+  width: 4140px;
+  height: 4140px;
+  top: -1873px;
+  left: -1873px;
+}
+.planet-view .planet-container .star .orbit:nth-child(8) {
+  width: 4700px;
+  height: 4700px;
+  top: -2153px;
+  left: -2153px;
+}
+.planet-view .planet-container .planet {
+  z-index: 2;
+  width: 180px;
+  height: 180px;
+  background: grey;
+  border-radius: 50%;
+  margin-left: 100px;
+  transition: 0.3s;
+}
+.planet-view .planet-container .planet:nth-child(2) {
+  transform: scale(0.035);
+  background: #727272;
+}
+.planet-view .planet-container .planet:nth-child(2):hover {
+  transform: scale(0.042);
+}
+.planet-view .planet-container .planet:nth-child(3) {
+  transform: scale(0.085);
+  background: #B0661B;
+}
+.planet-view .planet-container .planet:nth-child(3):hover {
+  transform: scale(0.102);
+}
+.planet-view .planet-container .planet:nth-child(4) {
+  transform: scale(0.09);
+  background: #395B78;
+}
+.planet-view .planet-container .planet:nth-child(4):hover {
+  transform: scale(0.108);
+}
+.planet-view .planet-container .planet:nth-child(5) {
+  transform: scale(0.05);
+  background: #CC6B32;
+}
+.planet-view .planet-container .planet:nth-child(5):hover {
+  transform: scale(0.06);
+}
+.planet-view .planet-container .planet:nth-child(6) {
+  transform: scale(1);
+  background: #757475;
+}
+.planet-view .planet-container .planet:nth-child(6):hover {
+  transform: scale(1.2);
+}
+.planet-view .planet-container .planet:nth-child(7) {
+  transform: scale(0.85);
+  background: #BEB598;
+}
+.planet-view .planet-container .planet:nth-child(7):hover {
+  transform: scale(1.02);
+}
+.planet-view .planet-container .planet:nth-child(8) {
+  transform: scale(0.36);
+  background: #C9EFF2;
+}
+.planet-view .planet-container .planet:nth-child(8):hover {
+  transform: scale(0.432);
+}
+.planet-view .planet-container .planet:nth-child(9) {
+  transform: scale(0.35);
+  background: #2766BB;
+}
+.planet-view .planet-container .planet:nth-child(9):hover {
+  transform: scale(0.42);
 }
 
 .navbar {
   position: absolute;
   height: 100vh;
+  max-height: 100%;
   left: 0;
   display: flex;
   flex-direction: row;
   transition: 0.7s;
+  z-index: 999;
 }
 .navbar.toggle-true {
   transform: translateX(0px);
@@ -21,7 +180,9 @@
 .navbar .nav-container {
   height: 100%;
   width: 70px;
-  background: black;
+  background: #1f1f1f;
+  border-right: dashed 2px rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,15 +194,18 @@
   transition: 0.4s;
 }
 .navbar .nav-container .nav-items .nav-item:hover {
-  color: orange;
+  color: #E0440B;
 }
 .navbar .toggle-button {
   display: flex;
   width: 50px;
   height: 50px;
-  background: black;
+  background: #1f1f1f;
   border-bottom-right-radius: 50px;
   cursor: pointer;
+  border-right: dashed 2px rgba(255, 255, 255, 0.15);
+  border-bottom: dashed 2px rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
 }
 .navbar .toggle-button .toggle-icon {
   margin: 8px;

@@ -13,6 +13,7 @@ class Navigation extends Component{
         super(props);
         this.state={
             toggle:true,
+            toggleable: !!this.props.toggleable,
         }
     }
     toggleMenu = () =>{
@@ -21,23 +22,25 @@ class Navigation extends Component{
         return this.setState(prevState);
     }
     render(){
-        console.log(this.state.toggle);
         return(
             <div className={"navbar toggle-"+this.state.toggle}>
                 <div className="nav-container">
                     <div className="nav-items">
-                        <Link to="/home"><div className="nav-item"><HomeIcon/></div></Link>
+                        <Link to="/"><div className="nav-item"><HomeIcon/></div></Link>
                         <Link to="/planets"><div className="nav-item"><PlanetIcon/></div></Link>
                         <Link to="/favourite"><div className="nav-item"><FavouriteIcon/></div></Link>
                         <Link to="/profile"><div className="nav-item"><ProfileIcon/></div></Link>
                         <Link to="/setting"><div className="nav-item"><SettingsIcon/></div></Link>
                     </div>
                 </div>
-                <div className="toggle-button" onClick={this.toggleMenu}><ToggleIcon className={"toggle-icon toggle-"+this.state.toggle}/></div>
+                {this.state.toggleable ?
+                    <div className="toggle-button" onClick={this.toggleMenu}><ToggleIcon className={"toggle-icon toggle-"+this.state.toggle}/></div>
+                    :console.log("Navigation toggle button disabled")
+                }
+
             </div>
 
         );
     }
-
 }
 export default Navigation;
