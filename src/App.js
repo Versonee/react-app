@@ -1,27 +1,18 @@
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import MainView from "./MainView";
+import React, {Component} from "react";
+import PlanetView from "./components/PlanetView";
+import './css/style.css'
 
-function App() {
-  return (
-    <MainPage />
-  );
+class App extends Component{
+
+    render(){
+        return(
+            <Router>
+                <Route exact path="/" render={()=><MainView/>}/>
+                <Route exact path="/planets" render={()=><PlanetView/>}/>
+            </Router>
+        );
+    }
 }
-
-const MainPage = () => {
-  return (
-    <div class="wrapper">
-      <div class="nav">
-        <div class="logo">LWK</div>
-      </div>
-      <div class="header-text">
-        <h1>Lot w Kosmos</h1>
-        <p>Nowy wymiar podróży.</p>
-        <button type="button">WIĘCEJ</button>
-      </div>
-      <div class="footer">
-        <div class="footer-text">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
-      </div>
-    </div>
-  );
-} 
-
 export default App;
