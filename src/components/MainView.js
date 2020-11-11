@@ -1,5 +1,5 @@
-import './App.css';
 import React from "react";
+import '../css/MainView.css';
 
 
 const MainView = () => {
