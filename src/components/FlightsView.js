@@ -33,21 +33,21 @@ class FlightsView extends Component {
 				<div class="flights-wrapper">
 					<div class="flights-filtering">
 						<div class="flights-filtering-selectors">
-							<select name="start-port">
+							<select class="flights-selector" name="start-port">
 							    <option value="">-Wybierz stację startową-</option>
 							    <option>Ziemia, Białystok</option>
 							    <option>Mars, Stacja A</option>
 							    <option>Mars, Stacja B</option>
 							</select>
-							<select name="end-port">
+							<select class="flights-selector" name="end-port">
 							    <option value="">-Wybierz stację końcową-</option>
 							    <option>Ziemia, Białystok</option>
 							    <option>Mars, Stacja A</option>
 							    <option>Mars, Stacja B</option>
 							</select>
-							<input type="date" name="start-date"/>
-							<input type="date" name="end-date"/>
-							<select name="flight-price">
+							<input class="flights-selector" type="date" name="start-date"/>
+							<input class="flights-selector" type="date" name="end-date"/>
+							<select class="flights-selector" name="flight-price">
 								<option value="">-Wybierz przedział cenowy-</option>
 								<option>10.000-15.000</option>
 								<option>15.000-20.000</option>
@@ -56,8 +56,10 @@ class FlightsView extends Component {
 						</div>
 						<button>SZUKAJ</button>
 					</div>
+					<hr/>
 					<div class="flights-list">
-						<table class="flights-table" cellspacing="0">
+						<table class="flights-table" cellSpacing="0">
+						<thead>
 						<tr class="flights-table-header">
 							<td class="outer-cell"></td>
 							<td class="info-cell with-border">Stacja startowa</td>
@@ -68,28 +70,34 @@ class FlightsView extends Component {
 							<td class="info-cell">Zajęte miejsca</td>
 							<td class="outer-cell"></td>
 						</tr>
+						</thead>
+						<tbody>
 
 						{
 							flightsList.map((value,index) => {
                                 return (
-                                	<tr class="flights-row">
+                                	<tr class="flights-row" key={index}>
 										<td class="outer-cell left"><i class="fas fa-plus-circle"></i></td>
-										<td class="info-cell">{value.start_port}</td>
-										<td class="info-cell">{value.end_port}</td>
-										<td class="info-cell">{value.start_date}</td>
-										<td class="info-cell">{value.end_date}</td>
-										<td class="info-cell">{value.price}</td>
+										<td class="info-cell"><div class="flights-table-txt">{value.start_port}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{value.end_port}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{value.start_date}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{value.end_date}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{value.price}</div></td>
 										<td class="info-cell">{value.seats}</td>
 										<td class="outer-cell right"></td>
 									</tr>
                                 )
                             })
                         }
+                        </tbody>
                         
 						</table>
 					</div>
 				</div>
-				<button class="flights-order">ZAMÓW</button>
+				<div class="flights-btns">
+					<button class="flights-order">ZAMÓW</button>
+					<i class="fas fa-shopping-cart"></i>
+				</div>
 			</div>
 			</>
 		)

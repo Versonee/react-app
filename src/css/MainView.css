@@ -57,7 +57,7 @@ html, body {
 .header-text button {
   background-color: #ff6c36;
   padding: 12px 32px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   font-size: 18px;
   color: #32100c;
@@ -67,6 +67,7 @@ html, body {
 
 .header-text button:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .header-text button:focus {
