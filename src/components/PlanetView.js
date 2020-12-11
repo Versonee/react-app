@@ -78,17 +78,16 @@ class PlanetView extends Component{
         return(
             <>
                 <Navigation toggleable={1}/>
-                <div className="planet-view">
-                    <div className="planet-container">
-                        <div className="star sun">
+                <div className="planets-panel">
+                    <div className="planets-container">
+                            <div className="star sun">
+                                {planetList.map((value,index)=>{
+                                    return <div key={index+"orbit"} className="orbit"></div>
+                                })}
+                            </div>
                             {planetList.map((value,index)=>{
-                                return <div key={index+"orbit"} className="orbit"></div>
+                                return <div key={index+"planet"} className={"planet planet-"+ value.name}></div>
                             })}
-                        </div>
-                        {planetList.map((value,index)=>{
-                            return <div key={index+"planet"} className={"planet planet-"+ value.name}></div>
-                        })}
-
                     </div>
                 </div>
             </>

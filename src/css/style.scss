@@ -1,14 +1,14 @@
-$lines: rgba(255,255,255,.15);
-$background_dark: #1f1f1f;
+$lines: #5c5c5c;
+$background_dark: #1c1c1c;
 $complementary: #E0440B;
 
 body{
     overflow:hidden;
 }
-.planet-view {
-    background-color: $lines;
+.planets-panel {
+    background: $background_dark;
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
     max-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -16,26 +16,28 @@ body{
     overflow-x: scroll;
     overflow-y: hidden;
     &::-webkit-scrollbar{
-        background: $background_dark;
+        //background: $background_dark;
+        border: dashed 2px $lines;
         height:10px;
     }
     &::-webkit-scrollbar-button{
         display:none;
     }
     &::-webkit-scrollbar-thumb{
-        background:  $lines;
+        background:  $background_dark;
+        border: solid 2px $lines;
         border-radius: 5px;
     }
-    .planet-container {
+
+    .planets-container {
         height: 100%;
         margin: 0 auto;
         background: $background_dark;
-        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
 
-        $space: 100;
+        $space: 120;
         $star_size: 400;
         $planet_size: 180;
         $orbit_width:2;
