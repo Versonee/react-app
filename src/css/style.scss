@@ -5,6 +5,10 @@ $complementary: #E0440B;
 body{
     overflow:hidden;
 }
+.planets-view{
+    background: $background_dark;
+    height:100vh;
+}
 .planets-panel {
     background: $background_dark;
     width: 100vw;
@@ -163,3 +167,41 @@ body{
         }
     }
 }
+.profile-view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.settings-view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.favourite-view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-view{
+     display:flex;
+     align-items: center;
+     justify-content: center;
+    .form-container{
+        .login-form{
+            display:flex;
+            flex-direction:column;
+        }
+    }
+ }
+.register-view{
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    .form-container{
+        .register-form{
+            display:flex;
+            flex-direction:column;
+
+        }
+    }
+  }

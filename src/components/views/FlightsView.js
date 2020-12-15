@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import '../css/FlightsView.css';
-import Navigation from "./Navigation";
+import '../../css/FlightsView.css';
+import Navigation from "../common/Navigation";
 
 let flightsList = [
 	{
