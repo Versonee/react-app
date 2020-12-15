@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Navigation from "./Navigation";
+import Navigation from "../common/Navigation";
 const planetList = [
     {
         name:"mercury",
@@ -78,8 +78,9 @@ class PlanetView extends Component{
         return(
             <>
                 <Navigation toggleable={1}/>
-                <div className="planets-panel">
-                    <div className="planets-container">
+                <div className="planets-view">
+                    <div className="planets-panel">
+                        <div className="planets-container">
                             <div className="star sun">
                                 {planetList.map((value,index)=>{
                                     return <div key={index+"orbit"} className="orbit"></div>
@@ -88,8 +89,10 @@ class PlanetView extends Component{
                             {planetList.map((value,index)=>{
                                 return <div key={index+"planet"} className={"planet planet-"+ value.name}></div>
                             })}
+                        </div>
                     </div>
                 </div>
+
             </>
         );
     }

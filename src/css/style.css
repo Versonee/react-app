@@ -2,6 +2,11 @@ body {
   overflow: hidden;
 }
 
+.planets-view {
+  background: #1c1c1c;
+  height: 100vh;
+}
+
 .planets-panel {
   background: #1c1c1c;
   width: 100vw;
@@ -218,6 +223,44 @@ body {
 }
 .navbar .toggle-button .toggle-icon.toggle-false {
   transform: rotateY(0deg);
+}
+
+.profile-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favourite-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-view .form-container .login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-view .form-container .register-form {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */
