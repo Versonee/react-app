@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {Component} from "react";
 import '../../css/FlightsView.css';
 import Navigation from "../common/Navigation";
@@ -24,8 +25,26 @@ for (let i = 0; i < 40; i++) {
 	};
 }
 
+
 class FlightsView extends Component {
+
+	state = {
+		flights: [],
+		seats: 0
+	}
+
+	componentDidMount() {
+		axios.get("https://bakent.herokuapp.com/flights")
+		.then(res => {
+			this.setState({
+				flights: res.data
+		 })
+		});
+	}
+
 	render() {
+		
+
 		return (
 			<>
 			<Navigation toggleable={1}/>
@@ -35,24 +54,29 @@ class FlightsView extends Component {
 						<div class="flights-filtering-selectors">
 							<select class="flights-selector" name="start-port">
 							    <option value="">-Wybierz stację startową-</option>
-							    <option>Ziemia, Białystok</option>
-							    <option>Mars, Stacja A</option>
-							    <option>Mars, Stacja B</option>
+								{
+									this.state.flights.map(flight => {
+                             		return <option>{flight.portLink.startingPort.name}</option>})
+                       			}
 							</select>
+
 							<select class="flights-selector" name="end-port">
 							    <option value="">-Wybierz stację końcową-</option>
-							    <option>Ziemia, Białystok</option>
-							    <option>Mars, Stacja A</option>
-							    <option>Mars, Stacja B</option>
+								{
+									this.state.flights.map(flight => {
+                             		return <option>{flight.portLink.endPort.name}</option>})
+                       			}
 							</select>
+
 							<input class="flights-selector" type="date" name="start-date"/>
 							<input class="flights-selector" type="date" name="end-date"/>
 							<select class="flights-selector" name="flight-price">
 								<option value="">-Wybierz przedział cenowy-</option>
-								<option>10.000-15.000</option>
-								<option>15.000-20.000</option>
-								<option>20.000-25.000</option>
+								<option>10.000-50.000</option>
+								<option>50.000-100.000</option>
+								<option>100.000+</option>
 							</select>
+
 						</div>
 						<button>SZUKAJ</button>
 					</div>
@@ -72,23 +96,24 @@ class FlightsView extends Component {
 						</tr>
 						</thead>
 						<tbody>
-
+							
 						{
-							flightsList.map((value,index) => {
+							this.state.flights.map(flight => {
                                 return (
-                                	<tr class="flights-row" key={index}>
+                                	<tr class="flights-row" key={flight.id}>
 										<td class="outer-cell left"><i class="fas fa-plus-circle"></i></td>
-										<td class="info-cell"><div class="flights-table-txt">{value.start_port}</div></td>
-										<td class="info-cell"><div class="flights-table-txt">{value.end_port}</div></td>
-										<td class="info-cell"><div class="flights-table-txt">{value.start_date}</div></td>
-										<td class="info-cell"><div class="flights-table-txt">{value.end_date}</div></td>
-										<td class="info-cell"><div class="flights-table-txt">{value.price}</div></td>
-										<td class="info-cell">{value.seats}</td>
+										<td class="info-cell"><div class="flights-table-txt">{flight.portLink.startingPort.name}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{flight.portLink.endPort.name}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{flight.start_date}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{flight.end_date}</div></td>
+										<td class="info-cell"><div class="flights-table-txt">{flight.ticketPrice}</div></td>
+										<td class="info-cell">{this.state.seats}/{flight.maxSize}</td>
 										<td class="outer-cell right"></td>
 									</tr>
                                 )
                             })
                         }
+					
                         </tbody>
                         
 						</table>
