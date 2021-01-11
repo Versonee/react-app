@@ -1,0 +1,207 @@
+$lines: #5c5c5c;
+$background_dark: #1c1c1c;
+$complementary: #E0440B;
+
+body{
+    overflow:hidden;
+}
+.planets-view{
+    background: $background_dark;
+    height:100vh;
+}
+.planets-panel {
+    background: $background_dark;
+    width: 100vw;
+    height: 50vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    &::-webkit-scrollbar{
+        //background: $background_dark;
+        border: dashed 2px $lines;
+        height:10px;
+    }
+    &::-webkit-scrollbar-button{
+        display:none;
+    }
+    &::-webkit-scrollbar-thumb{
+        background:  $background_dark;
+        border: solid 2px $lines;
+        border-radius: 5px;
+    }
+
+    .planets-container {
+        height: 100%;
+        margin: 0 auto;
+        background: $background_dark;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        $space: 120;
+        $star_size: 400;
+        $planet_size: 180;
+        $orbit_width:2;
+        $planet_scale:(0.035,0.085,0.09,0.05,1,0.85,0.36,0.35);
+        $planet_color:(#727272,#B0661B,#395B78,#CC6B32,#757475,#BEB598,#C9EFF2,#2766BB);
+
+        .star {
+            width: $star_size+#{"px"};
+            height: $star_size+#{"px"};
+            margin-left: -200px;
+            background: $complementary;
+            border-radius: 50%;
+            position: relative;
+            z-index: 0;
+
+            .orbit {
+                border: dashed $orbit_width+#{"px"} $lines;
+                border-radius: 50%;
+                position: absolute;
+
+                @for $i from 1 through 8 {
+                    &:nth-child(#{$i}) {
+                        $size: ($star_size/2+$planet_size/2+$space*$i+$planet_size*($i - 1))*2;
+                        width: #{$size+"px"};
+                        height: #{$size+"px"};
+                        top: #{-$size / 2 + $star_size / 2 - $orbit_width* 1.5 + "px"};
+                        left: #{-$size / 2 + $star_size / 2 - $orbit_width* 1.5 + "px"};
+                    }
+                }
+            }
+        }
+
+        .planet {
+            z-index:2;
+            width: #{$planet_size+"px"};
+            height: #{$planet_size+"px"};;
+            background: grey;
+            border-radius: 50%;
+            margin-left: $space+#{"px"};
+            transition:.3s;
+            @for $i from 1 through 8{
+                &:nth-child(#{$i + 1}){
+                    $scale: nth($planet_scale, $i);
+                    transform: scale($scale);
+                    background: nth($planet_color, $i);
+                    &:hover{
+                        transform: scale($scale * 1.2);
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+.navbar {
+    position: absolute;
+    height: 100vh;
+    max-height: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    transition: .7s;
+    z-index: 999;
+
+    &.toggle-true {
+        transform: translateX(0px);
+    }
+
+    &.toggle-false {
+        transform: translateX(-70px);
+    }
+
+    .nav-container {
+        height: 100%;
+        width: 70px;
+        background: $background_dark;
+        border-right: dashed 2px $lines;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .nav-items {
+            .nav-item {
+                font-size: 30px;
+                margin: 40px 0;
+                color: white;
+                transition: .4s;
+
+                &:hover {
+                    color: $complementary;
+                }
+            }
+        }
+    }
+
+    .toggle-button {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        background: $background_dark;
+        border-bottom-right-radius: 50px;
+        cursor: pointer;
+        border-right: dashed 2px $lines;
+        border-bottom: dashed 2px $lines;
+        box-sizing: border-box;
+
+        .toggle-icon {
+            margin: 8px;
+            color: white;
+            font-size: 25px;
+            transition: .7s;
+
+            &.toggle-true {
+                transform: rotateY(180deg);
+            }
+
+            &.toggle-false {
+                transform: rotateY(0deg);
+            }
+        }
+    }
+}
+.profile-view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.settings-view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.favourite-view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-view{
+     display:flex;
+     align-items: center;
+     justify-content: center;
+    .form-container{
+        .login-form{
+            display:flex;
+            flex-direction:column;
+        }
+    }
+ }
+.register-view{
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    .form-container{
+        .register-form{
+            display:flex;
+            flex-direction:column;
+
+        }
+    }
+  }
