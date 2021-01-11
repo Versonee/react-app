@@ -54,7 +54,4 @@ export default function App() {
             <Route exact path="/register" render={()=><RegisterView/>}/>
         </Router>
     );
-
-
-
 }

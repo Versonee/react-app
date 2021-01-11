@@ -6,7 +6,8 @@ const LoginView = (props) =>{
     const { register, errors, handleSubmit } = useForm();
     const [logStatus, setLogStatus] = useState(null);
     let history = useHistory();
-    const onSubmit = (data) => {
+    const onSubmit = data => {
+
         const url = 'https://bakent.herokuapp.com/users';
         const user = {
             login: data.username,
@@ -20,13 +21,13 @@ const LoginView = (props) =>{
             .then(res => {
                 if(res.data){
                     props.updateUser(res.data);
+                    console.log(res);
                     history.push('/profile');
                 }else{
                     setLogStatus(false);
                 }
             });
     }
-
     return(
         <>
             <div className="login-view">

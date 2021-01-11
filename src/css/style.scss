@@ -9,6 +9,10 @@ body{
     background: $background_dark;
     height:100vh;
 }
+.planets-view{
+    background: $background_dark;
+    height:100vh;
+}
 .planets-panel {
     background: $background_dark;
     width: 100vw;
@@ -171,6 +175,7 @@ body{
     display:flex;
     align-items: center;
     justify-content: center;
+
     flex-direction: column;
     //overflow-y: scroll;
     .history{
@@ -259,6 +264,7 @@ body{
         }
     }
   }
+
 .shopping-cart{
     display: flex;
     width:50%;
