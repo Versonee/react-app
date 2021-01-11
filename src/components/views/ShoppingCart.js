@@ -11,7 +11,7 @@ const ShoppingCart = (props) =>{
     const getTotalCost = () =>{
         let cost=0;
         shopList.forEach((value)=>{
-            cost+=parseFloat(value.price);
+            cost+=parseFloat(value.ticketPrice);
         })
         return cost;
     }
@@ -31,11 +31,11 @@ const ShoppingCart = (props) =>{
                 {shopList.map((value, index)=>{
                     return(
                         <div key={"shop-item-"+index} className="item">
-                            <div className="from">{value.start_port}</div>
+                            <div className="from">{value.portLink.startingPort.name}</div>
                             <div className="arrow">to</div>
-                            <div className="to">{value.end_port}</div>
+                            <div className="to">{value.portLink.endPort.name}</div>
                             <div className="price">
-                                <div className="amount">{parseFloat(value.price)}</div>
+                                <div className="amount">{parseFloat(value.ticketPrice)}</div>
                                 <div className="currency">PLN</div>
                             </div>
                             <div className="remove-item-container">
