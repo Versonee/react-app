@@ -3,7 +3,11 @@ $background_dark: #1c1c1c;
 $complementary: #E0440B;
 
 body{
-    overflow:hidden;
+    //overflow:hidden;
+}
+.planets-view{
+    background: $background_dark;
+    height:100vh;
 }
 .planets-view{
     background: $background_dark;
@@ -99,7 +103,7 @@ body{
 }
 
 .navbar {
-    position: absolute;
+    position: fixed;
     height: 100vh;
     max-height: 100%;
     left: 0;
@@ -171,6 +175,61 @@ body{
     display:flex;
     align-items: center;
     justify-content: center;
+
+    flex-direction: column;
+    //overflow-y: scroll;
+    .history{
+        width:50%;
+        padding:20px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.1);
+        margin-top:50px;
+        margin-bottom:50px;
+        .description{
+            font-weight:bold;
+            font-size: 24px;
+            margin-bottom:10px;
+        }
+        .empty-message{
+            font-size: 18px;
+        }
+    }
+    .user-info{
+        width:50%;
+        padding:20px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.1);
+        margin-top:50px;
+        .description{
+            font-weight:bold;
+            font-size: 24px;
+            margin-bottom:10px;
+        }
+
+        .account{
+            display:flex;
+            flex-direction: row;
+
+            .name, .lastname{
+                margin-right:5px;
+                text-transform: capitalize;
+                font-size:18px;
+            }
+            .login{
+                font-weight: bold;
+                align-self:center;
+            }
+        }
+        .sex{
+            color:rgba(0,0,0,0.7);
+        }
+        .birthday{
+            color:rgba(0,0,0,0.7);
+
+        }
+    }
 }
 .settings-view{
     display:flex;
@@ -205,3 +264,127 @@ body{
         }
     }
   }
+
+.shopping-cart{
+    display: flex;
+    width:50%;
+    flex-direction: column;
+    box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.1);
+    padding:20px;
+    margin-top:50px;
+    .cart-title{
+        font-size: 24px;
+        margin-bottom:10px;
+        font-weight: bold;
+    }
+    .shop-items{
+        width:100%;
+        .item{
+            padding:0 5%;
+            margin:5px 0;
+            background: rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: row;
+            height:50px;
+            width:90%;
+            align-content: center;
+            justify-items: center;
+            .from{
+                width:20%;
+                align-self:center;
+                justify-self: flex-end;
+            }
+            .arrow{
+                width:10%;
+                display: flex;
+                align-self:center;
+                justify-content: center;
+                color:rgba(0,0,0,0.5);
+            }
+            .to{
+                width:20%;
+                align-self:center;
+            }
+            .price{
+                width:40%;
+                display: flex;
+                align-self:center;
+                justify-content: center;
+                .amount{
+                    font-weight: bold;
+                }
+                .currency{
+                    margin-left:5px;
+                    font-size: 12px;
+                    align-self: flex-end;
+                }
+            }
+            .remove-item-container{
+                width:10%;
+                display: flex;
+                align-self:center;
+                justify-content: flex-end;
+                .remove-item{
+                    display: flex;
+                    width:30px;
+                    height:30px;
+                    transform: rotate(45deg);
+                    font-size:30px;
+                    font-weight: bold;
+                    color:$complementary;
+                    cursor:pointer;
+                    align-items: center;
+                    justify-content: center;
+                    user-select: none;
+                }
+            }
+        }
+    }
+    .empty-message{
+        font-size:18px;
+    }
+    .summary{
+        width:100%;
+        //padding:0 5%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        .total-cost{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 20px;
+            .description{
+                color:rgba(0,0,0,0.5);
+                margin-right:5px;
+            }
+            .price{
+                font-weight: bold;
+            }
+            .currency{
+                margin-left:5px;
+                font-size:12px;
+                align-self: flex-end;
+            }
+        }
+        .buy-button{
+            text-transform: uppercase;
+            color:white;
+            font-size:20px;
+            font-weight: bold;
+            width:180px;
+            height:50px;
+            background: $complementary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .4s;
+            &:hover{
+                background: rgba($complementary,.5);
+            }
+        }
+    }
+
+}
