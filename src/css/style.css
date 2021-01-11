@@ -1,7 +1,3 @@
-body {
-  overflow: hidden;
-}
-
 .planets-view {
   background: #1c1c1c;
   height: 100vh;
@@ -167,7 +163,7 @@ body {
 }
 
 .navbar {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   max-height: 100%;
   left: 0;
@@ -229,6 +225,56 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.profile-view .history {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.profile-view .history .description {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.profile-view .history .empty-message {
+  font-size: 18px;
+}
+.profile-view .user-info {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+.profile-view .user-info .description {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.profile-view .user-info .account {
+  display: flex;
+  flex-direction: row;
+}
+.profile-view .user-info .account .name, .profile-view .user-info .account .lastname {
+  margin-right: 5px;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+.profile-view .user-info .account .login {
+  font-weight: bold;
+  align-self: center;
+}
+.profile-view .user-info .sex {
+  color: rgba(0, 0, 0, 0.7);
+}
+.profile-view .user-info .birthday {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .settings-view {
@@ -261,6 +307,128 @@ body {
 .register-view .form-container .register-form {
   display: flex;
   flex-direction: column;
+}
+
+.shopping-cart {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 50px;
+}
+.shopping-cart .cart-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.shopping-cart .shop-items {
+  width: 100%;
+}
+.shopping-cart .shop-items .item {
+  padding: 0 5%;
+  margin: 5px 0;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 90%;
+  align-content: center;
+  justify-items: center;
+}
+.shopping-cart .shop-items .item .from {
+  width: 20%;
+  align-self: center;
+  justify-self: flex-end;
+}
+.shopping-cart .shop-items .item .arrow {
+  width: 10%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.shopping-cart .shop-items .item .to {
+  width: 20%;
+  align-self: center;
+}
+.shopping-cart .shop-items .item .price {
+  width: 40%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.shopping-cart .shop-items .item .price .amount {
+  font-weight: bold;
+}
+.shopping-cart .shop-items .item .price .currency {
+  margin-left: 5px;
+  font-size: 12px;
+  align-self: flex-end;
+}
+.shopping-cart .shop-items .item .remove-item-container {
+  width: 10%;
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+}
+.shopping-cart .shop-items .item .remove-item-container .remove-item {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  transform: rotate(45deg);
+  font-size: 30px;
+  font-weight: bold;
+  color: #E0440B;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.shopping-cart .empty-message {
+  font-size: 18px;
+}
+.shopping-cart .summary {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.shopping-cart .summary .total-cost {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+.shopping-cart .summary .total-cost .description {
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 5px;
+}
+.shopping-cart .summary .total-cost .price {
+  font-weight: bold;
+}
+.shopping-cart .summary .total-cost .currency {
+  margin-left: 5px;
+  font-size: 12px;
+  align-self: flex-end;
+}
+.shopping-cart .summary .buy-button {
+  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  width: 180px;
+  height: 50px;
+  background: #E0440B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+.shopping-cart .summary .buy-button:hover {
+  background: rgba(224, 68, 11, 0.5);
 }
 
 /*# sourceMappingURL=style.css.map */
