@@ -30,7 +30,7 @@ class Navigation extends Component{
                         <Link to="/planets"><div className="nav-item"><PlanetIcon/></div></Link>
                         <Link to="/favourite"><div className="nav-item"><FavouriteIcon/></div></Link>
                         <Link to="/profile"><div className="nav-item"><ProfileIcon/></div></Link>
-                        <Link to="/settings"><div className="nav-item"><SettingsIcon/></div></Link>
+                        <Link to="/flights"><div className="nav-item"><SettingsIcon/></div></Link>
                     </div>
                 </div>
                 {this.state.toggleable ?
