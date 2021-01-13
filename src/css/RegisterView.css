@@ -1,0 +1,89 @@
+.register-background {
+    width: 100%;
+    height: 100vh;
+    background: url(../images/background-without-mars.jpg);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    overflow-y: scroll;
+}
+.register-wrapper {
+    width: 30%;
+    min-height: 100vh;
+    background-color: rgb(68, 66, 66);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-left: dashed 2px rgba(255, 255, 255, 0.15);
+    border-right: dashed 2px rgba(255, 255, 255, 0.15);
+
+}
+.form-container{
+    margin-top: 15vh;
+}
+.register-button button {
+    margin-top: 20px;
+    width: 200px;
+    height: 33px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 19px;
+    background-color: #ff6c36;
+    letter-spacing: 0.5px;
+}
+
+.register-button button:focus {
+    border: none;
+    outline: none;
+}
+
+.register-button button:hover {
+    /*transform: scale(1.1);*/
+    cursor: pointer;
+    background-color: white;
+}
+.register-fields{
+    margin-bottom: 20px;
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+
+}
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(255, 108, 54, 0.15);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(255, 108, 54, 0.15);
+}
+
+
+.footer-text {
+    width: 90%;
+    float: left;
+    text-align: right;
+    font-size: 16px;
+    line-height: 60px;
+    padding: 0 1em;
+    letter-spacing: 1px;
+}
