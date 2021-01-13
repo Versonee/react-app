@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-
+import '../../css/RegisterView.css';
 export default function RegisterView(props) {
     const { register,errors, handleSubmit } = useForm();
 
@@ -30,32 +30,42 @@ export default function RegisterView(props) {
     }
 
     return(
-        <div className="register-view">
-            <div className="form-container">
-                <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
-                    <label>First name: </label>
-                    <input ref={register({required:true, minLength:3})} name="firstName"/>
-                    {errors.firstName && "Invalid first name"}
-                    <label>Last name: </label>
-                    <input ref={register({required:true, minLength:3})} name="lastName"/>
-                    {errors.lastName && "Invalid last name"}
-                    <label>Username: </label>
-                    <input ref={register({required:true, minLength:3})} name="login"/>
-                    {errors.login && "Invalid username"}
-                    <label>Password: </label>
-                    <input ref={register({required:true, minLength:3})} name="password"/>
-                    {errors.password && "Invalid password"}
-                    <label>Date of birth: </label>
-                    <input type="date" ref={register({required:true})} name="date_of_birth"/>
+        <div className="register-background">
+            <div className="nav"></div>
+            <div className="register-wrapper">
+                <div className="register-view">
+                    <div className="form-container">
+                        <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
+                            <label>First name: </label>
+                            <input className="register-fields"  ref={register({required:true, minLength:3})} name="firstName"/>
+                            {errors.firstName && "Invalid first name"}
+                            <label>Last name: </label>
+                            <input className="register-fields" ref={register({required:true, minLength:3})} name="lastName"/>
+                            {errors.lastName && "Invalid last name"}
+                            <label>Username: </label>
+                            <input className="register-fields" ref={register({required:true, minLength:3})} name="login"/>
+                            {errors.login && "Invalid username"}
+                            <label>Password: </label>
+                            <input className="register-fields" ref={register({required:true, minLength:3})} name="password"/>
+                            {errors.password && "Invalid password"}
+                            <label>Date of birth: </label>
+                            <input className="register-fields" type="date" ref={register({required:true})} name="date_of_birth"/>
 
-                    <div className="gender">
-                        <label>Gender: </label>
-                        <input ref={register({required:true})} type="radio" value="M" name="sex" /> male
-                        <input ref={register({required:true})} type="radio" value="K" name="sex" /> female
-                        {errors.sex && "Sex required"}
+                            <div className="gender">
+                                <label>Gender: </label>
+                                <input ref={register({required:true})} type="radio" value="M" name="sex" /> male
+                                <input ref={register({required:true})} type="radio" value="K" name="sex" /> female
+                                {errors.sex && "Sex required"}
+                            </div>
+                            <div className="register-button">
+                                <button >Zarejestruj się</button>
+                            </div>
+                        </form>
                     </div>
-                    <button>Submit</button>
-                </form>
+                </div>
+            </div>
+            <div className="footer">
+                <div className="footer-text">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
             </div>
         </div>
     );

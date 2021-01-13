@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {useHistory} from "react-router";
+import '../../css/LoginView.css';
+import {Link} from "react-router-dom";
 const LoginView = (props) =>{
     const { register, errors, handleSubmit } = useForm();
     const [logStatus, setLogStatus] = useState(null);
@@ -30,18 +32,37 @@ const LoginView = (props) =>{
     }
     return(
         <>
-            <div className="login-view">
-                <div className="form-container">
-                    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-                        <label>Username: </label>
-                        <input ref={register({required: true,minLength: 3})} name="username"/>
-                        {errors.username && "Invalid username"}
-                        <label>Password: </label>
-                        <input ref={register({required: true,minLength: 3})} name="password"/>
-                        {errors.password && "Invalid password"}
-                        <button>Submit</button>
-                    </form>
-                    { logStatus===false ? "Błędne dane. Logowanie nie powiodło się":''}
+            <div className="login-background">
+                <div className="nav"></div>
+                <div className="login-wrapper">
+                    <div className="login-view">
+                        <div className="form-container">
+                            <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+                                <label>Login: </label>
+                                    <div >
+                                        <input className="login-fields" ref={register({required: true,minLength: 3})} name="username"/>
+                                    </div>
+                                    {errors.username && "Błędna nazwa użytkownika"}
+                                <label>Hasło: </label>
+                                    <div >
+                                        <input className="login-fields" ref={register({required: true,minLength: 3})} name="password"/>
+                                    </div>
+                                    {errors.password && "Błędne hasło"}
+                                <div className="login-button">
+                                    <button >Zaloguj się</button>
+                                </div>
+                                <Link to="/register">
+                                <div className="login-button">
+                                    <button >Zarejestruj się</button>
+                                </div></Link>
+                            </form>
+                            { logStatus===false ? "Błędne dane. Logowanie nie powiodło się":''}
+                        </div>
+                    </div>
+
+                </div>
+                <div className="footer">
+                    <div className="footer-text">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
                 </div>
             </div>
         </>
