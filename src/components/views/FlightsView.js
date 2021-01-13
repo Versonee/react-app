@@ -76,8 +76,8 @@ export default class FlightsView extends Component {
                                 return (
                                 	<tr className="flights-row" key={"flight-"+flight.id}>
 										<td onClick={()=>this.props.addCardTrigger(flight)} className="outer-cell left"><i className="fas fa-plus-circle"></i></td>
-										<td className="info-cell"><div className="flights-table-txt">{flight.portLink.startingPort.name}</div></td>
-										<td className="info-cell"><div className="flights-table-txt">{flight.portLink.endPort.name}</div></td>
+										<td className="info-cell"><div className="flights-table-txt">{flight.portLink.startingPort.planet.name}, {flight.portLink.startingPort.name}</div></td>
+										<td className="info-cell"><div className="flights-table-txt">{flight.portLink.endPort.planet.name}, {flight.portLink.endPort.name}</div></td>
 										<td className="info-cell"><div className="flights-table-txt">{flight.start_date}</div></td>
 										<td className="info-cell"><div className="flights-table-txt">{flight.end_date}</div></td>
 										<td className="info-cell"><div className="flights-table-txt">{flight.ticketPrice}</div></td>
