@@ -11,8 +11,6 @@ import LoginView from "./components/views/LoginView";
 import RegisterView from "./components/views/RegisterView";
 import User from "./User";
 
-
-
 export default function App() {
     const [user, setUserState] = useState(JSON.parse(window.sessionStorage.getItem("user")) || '');
     const [shopList,setShopList] = useState(JSON.parse(window.localStorage.getItem("shopping-card-list")) || []);
@@ -35,6 +33,7 @@ export default function App() {
         setShopList(newShopList);
         window.localStorage.setItem("shopping-card-list",JSON.stringify([...newShopList]));
     }
+
     const removeFromCart = (items) => {
         // let newShopList = shopList;
         // newShopList.splice(newShopList.indexOf(item), 1);
