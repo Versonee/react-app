@@ -91,6 +91,13 @@ class PlanetView extends Component{
                             })}
                         </div>
                     </div>
+                    <div className="footer">
+                        <div className="footer-text">
+                            <div className="p_f_text" >
+                                Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </>

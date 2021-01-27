@@ -61,8 +61,8 @@ const LoginView = (props) =>{
                     </div>
 
                 </div>
-                <div className="footer">
-                    <div className="footer-text">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
+                <div className="footer1">
+                    <div className="footer-text1">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
                 </div>
             </div>
         </>
