@@ -2,8 +2,34 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import '../../css/RegisterView.css';
+import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer} from "react-toastify";
+
 export default function RegisterView(props) {
     const { register,errors, handleSubmit } = useForm();
+
+    let handleClickSuccess;
+    let handleClickError;
+    handleClickError = () =>
+        toast.error("Nie dodano użytkownika", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    })
+    handleClickSuccess = () =>
+        toast.success("Dodano poprawnie użytkownika!" , {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
 
     const onSubmit = data => {
         const url = 'https://bakent.herokuapp.com/users';
@@ -23,8 +49,10 @@ export default function RegisterView(props) {
             .then(res => {
                 if(res.status===200){
                     console.log("Pomyślnie zarejestrowano");
+                    handleClickSuccess();
                 }else{
                     console.log("Rejestracja nie powiodła się");
+                    handleClickError();
                 }
             });
     }
@@ -67,6 +95,7 @@ export default function RegisterView(props) {
             <div className="footer">
                 <div className="footer-text">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
             </div>
+            <ToastContainer/>
         </div>
     );
 }
