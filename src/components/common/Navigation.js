@@ -1,10 +1,9 @@
 import React, {Component} from "react";
-import {ReactComponent as SettingsIcon} from "../../images/settings.svg";
 import {ReactComponent as PlanetIcon} from "../../images/planet.svg";
 import {ReactComponent as HomeIcon} from "../../images/home.svg";
-import {ReactComponent as FavouriteIcon} from "../../images/favourite.svg";
 import {ReactComponent as ProfileIcon} from "../../images/profile.svg";
 import {ReactComponent as ToggleIcon} from "../../images/toggle.svg";
+import {ReactComponent as FlightIcon} from "../../images/flight.svg";
 import {Link} from "react-router-dom";
 
 
@@ -28,9 +27,8 @@ class Navigation extends Component{
                     <div className="nav-items">
                         <Link to="/"><div className="nav-item"><HomeIcon/></div></Link>
                         <Link to="/planets"><div className="nav-item"><PlanetIcon/></div></Link>
-                        <Link to="/favourite"><div className="nav-item"><FavouriteIcon/></div></Link>
                         <Link to="/profile"><div className="nav-item"><ProfileIcon/></div></Link>
-                        <Link to="/flights"><div className="nav-item"><SettingsIcon/></div></Link>
+                        <Link to="/flights"><div className="nav-item"><FlightIcon/></div></Link>
                     </div>
                 </div>
                 {this.state.toggleable ?
