@@ -74,10 +74,10 @@ export default function RegisterView(props) {
                             <input className="register-fields" ref={register({required:true, minLength:3})} name="login"/>
                             {errors.login && "Invalid username"}
                             <label>Password: </label>
-                            <input className="register-fields" ref={register({required:true, minLength:3})} name="password"/>
+                            <input type ="password" className="register-fields" ref={register({required:true, minLength:3})} name="password"/>
                             {errors.password && "Invalid password"}
                             <label>Date of birth: </label>
-                            <input className="register-fields" type="date" ref={register({required:true})} name="date_of_birth"/>
+                            <input className="register-fields" type="date"  min="1900-01-01" max="2003-12-12" ref={register({required:true})} name="date_of_birth"/>
 
                             <div className="gender">
                                 <label>Gender: </label>
