@@ -28,7 +28,7 @@ const planetList = [
     {
         name:"mars",
         discovery:"Known to the ancient Greeks and visible to the naked eye",
-        nameOrigin: "Name originates from \"Die Erde,\" the German word for \"the ground.\"",
+        nameOrigin: "Name originates from roman god of war",
         diameter: "4,217 miles (6,787 km)",
         orbit: "687 Earth days",
         day: "24 hours, 37 minutes",
@@ -71,7 +71,13 @@ class PlanetView extends Component{
         super(props);
         this.state = {
             status : 1,
+            currentPlanet:null
         }
+    }
+    onClick = (e)=>{
+        let newState = this.state;
+        newState.currentPlanet= planetList[e.target.getAttribute("data-index")];
+        this.setState(newState);
     }
 
     render(){
@@ -87,7 +93,7 @@ class PlanetView extends Component{
                                 })}
                             </div>
                             {planetList.map((value,index)=>{
-                                return <div key={index+"planet"} className={"planet planet-"+ value.name}></div>
+                                return <div data-index={index} key={index+"planet"} className={"planet planet-"+ value.name} onClick={this.onClick}></div>
                             })}
                         </div>
                     </div>
@@ -98,6 +104,16 @@ class PlanetView extends Component{
                             </div>
                         </div>
                     </div>
+                    {this.state.currentPlanet?
+                        <div className="planet-info-panel">
+                            <div className="info-planet-name">{this.state.currentPlanet.name}</div>
+                            <div className="info-planet-discovery">{this.state.currentPlanet.discovery}</div>
+                            <div className="info-planet-day">Here day lasts {this.state.currentPlanet.day}</div>
+                            <div className="info-planet-name-origin">{this.state.currentPlanet.nameOrigin}</div>
+                            <div className="info-planet-orbit">One revolution around Sun takes {this.state.currentPlanet.orbit}</div>
+                        </div>
+                        :""
+                    }
                 </div>
 
             </>

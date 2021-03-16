@@ -101,7 +101,37 @@ body{
         }
     }
 }
+.planet-info-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:200px;
+    color:white;
+    .info-planet-name{
+        text-transform: uppercase;
+        font-size:20px;
+        color:$complementary;
+    }
+    .info-planet-discovery{
+        margin-top:5px;
+        font-size: 12px;
+        margin-bottom: 15px;
+        color:rgba(255,255,255,.6);
+    }
+    .info-planet-day{
+        margin-top:5px;
+    }
+    .info-planet-name-origin{
+        margin-top:5px;
 
+    }
+    .info-planet-orbit{
+        margin-top:5px;
+
+    }
+}
 .navbar {
     position: fixed;
     height: 100vh;
