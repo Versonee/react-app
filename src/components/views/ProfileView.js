@@ -15,22 +15,19 @@ export default function ProfileView(props){
                 <div className="profile-wrapper">
                 <div className="profile-view">
                     <div className="user-info">
-                        <div className="description">User information</div>
+                        <div className="description">Informacje użytkownika</div>
                         <div className="account">
                             <div className="name">{user.firstName}</div>
                             <div className="lastname">{user.lastName}</div>
                             <div className="login">({user.login})</div>
                         </div>
-                        <div className="sex">Sex: {user.sex}</div>
-                        <div className="birthday">Birthday: {user.dateOfBirth}</div>
+                        <div className="sex">Płeć: {user.sex}</div>
+                        <div className="birthday">Data urodzenia: {user.dateOfBirth}</div>
                     </div>
                     <ShoppingCart removeTrigger={props.removeTrigger} shopList={props.shopList}/>
                     <div className="history">
                         <div className="description">Transaction history</div>
                         <div className="empty-message">No data about previous transactions.</div>
-                    </div>
-                    <div className="footer">
-                        <div className="footer-text">Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok</div>
                     </div>
                 </div>
                 </div>
