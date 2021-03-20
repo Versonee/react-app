@@ -21,6 +21,7 @@ export default class FlightsView extends Component {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
+            className: "my-toast",
         });
 
     componentDidMount() {

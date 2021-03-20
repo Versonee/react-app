@@ -141,6 +141,7 @@ hr {
 
 .flights-table td.info-cell {
 	width: 15%;
+	height: 40px;
 }
 
 .flights-table td.info-cell.with-border {
@@ -148,8 +149,6 @@ hr {
 }
 
 .flights-table-txt {
-	height: 30px;
-	line-height: 30px;
 	border-right: 2px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -157,10 +156,14 @@ hr {
 	width: 5%;
 }
 
+.info-cell {
+	vertical-align: middle;
+	min-height: 40px;
+}
+
 .flights-table .flights-row td {
 	background-color: rgba(31, 31, 31, 1);
 	padding: 0;
-	height: 40px;
 }
 
 .flights-table .flights-row td.outer-cell.left {
@@ -177,4 +180,9 @@ hr {
 .flights-table .flights-row td.outer-cell.right {
 	border-top-right-radius: 30px;
 	border-bottom-right-radius: 30px;
+}
+
+.my-toast {
+	background: #ff6c36 !important;
+	font-family: 'Oswald', sans-serif !important;
 }
