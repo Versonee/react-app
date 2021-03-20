@@ -26,14 +26,15 @@ const ShoppingCart = (props) =>{
     }
     return(
         <div className="shopping-cart">
-            <div className="cart-title">Shopping cart</div>
+            <div className="cart-title">Koszyk</div>
             <div className="shop-items">
                 {shopList.map((value, index)=>{
                     return(
                         <div key={"shop-item-"+index} className="item">
-                            <div className="from">{value.portLink.startingPort.name}</div>
-                            <div className="arrow">to</div>
-                            <div className="to">{value.portLink.endPort.name}</div>
+                            <div className="arrow">z</div>
+                            <div className="from">{value.portLink.startingPort.name}, {value.portLink.startingPort.planet.name}</div>
+                            <div className="arrow">do</div>
+                            <div className="to">{value.portLink.endPort.name}, {value.portLink.endPort.planet.name}</div>
                             <div className="price">
                                 <div className="amount">{parseFloat(value.ticketPrice)}</div>
                                 <div className="currency">PLN</div>
@@ -48,15 +49,15 @@ const ShoppingCart = (props) =>{
             {shopList.length > 0 &&
                 <div className="summary">
                     <div className="total-cost">
-                        <div className="description">Total:</div>
+                        <div className="description">Suma:</div>
                         <div className="price">{getTotalCost()}</div>
                         <div className="currency">PLN</div>
                     </div>
-                    <div className="buy-button" onClick={createOrder}>confirm</div>
+                    <div className="buy-button" onClick={createOrder}>płacę</div>
                 </div>
             }
             {shopList.length === 0 &&
-                <div className="empty-message">Your basket is empty</div>
+                <div className="empty-message">Twój koszyk jest pusty.</div>
             }
 
         </div>
