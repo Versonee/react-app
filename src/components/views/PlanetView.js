@@ -1,124 +1,77 @@
-import React, {Component} from "react";
 import Navigation from "../common/Navigation";
-const planetList = [
-    {
-        name:"mercury",
-        discovery:"Known to the ancient Greeks and visible to the naked eye",
-        nameOrigin: "Named after the messenger of the Roman gods",
-        diameter: "3,031 miles (4,878 km)",
-        orbit: "88 Earth days",
-        day: "58.6 Earth days",
-    },
-    {
-        name:"venus",
-        discovery:"Known to the ancient Greeks and visible to the naked eye",
-        nameOrigin: "Named after the Roman goddess of love and beauty",
-        diameter: "7,521 miles (12,104 km)",
-        orbit: "225 Earth days",
-        day: "241 Earth days",
-    },
-    {
-        name:"earth",
-        discovery:"We are here!",
-        nameOrigin: "Name originates from \"Die Erde,\" the German word for \"the ground.\"",
-        diameter: "7,926 miles (12,760 km)",
-        orbit: "365.24 days",
-        day: "23 hours, 56 minutes",
-    },
-    {
-        name:"mars",
-        discovery:"Known to the ancient Greeks and visible to the naked eye",
-        nameOrigin: "Name originates from roman god of war",
-        diameter: "4,217 miles (6,787 km)",
-        orbit: "687 Earth days",
-        day: "24 hours, 37 minutes",
-    },
-    {
-        name:"jupiter",
-        discovery:"Known to the ancient Greeks and visible to the naked eye",
-        nameOrigin: "Named after the ruler of the Roman gods",
-        diameter: "86,881 miles (139,822 km)",
-        orbit: "11.9 Earth years",
-        day: "9.8 Earth hours",
-    },
-    {
-        name:"saturn",
-        discovery:"Known to the ancient Greeks and visible to the naked eye",
-        nameOrigin: "Named after Roman god of agriculture",
-        diameter: "74,900 miles (120,500 km)",
-        orbit: "29.5 Earth years",
-        day: "10.5 Earth hours",
-    },
-    {
-        name:"uranus",
-        discovery:"Discovered in 1781 by William Herschel (was originally thought to be a star)",
-        nameOrigin: "Named after the personification of heaven in ancient myth",
-        diameter: "31,763 miles (51,120 km)",
-        orbit: "84 Earth years",
-        day: "18 Earth hours",
-    },
-    {
-        name:"neptun",
-        discovery:"Discovered in 1846",
-        nameOrigin: "Named after the Roman god of water",
-        diameter: "30,775 miles (49,530 km)",
-        orbit: "165 Earth years",
-        day: "19 Earth hours",
-    },
-    ]
-class PlanetView extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            status : 1,
-            currentPlanet:null
-        }
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+
+const PlanetView  = props =>{
+    const [planet, setPlanet] = useState(null);
+    const [planetList, setPlanetList] = useState(null)
+    const onClick = (e)=>{
+        setPlanet(planetList[e.target.getAttribute("data-index")-1]);
     }
-    onClick = (e)=>{
-        let newState = this.state;
-        newState.currentPlanet= planetList[e.target.getAttribute("data-index")];
-        this.setState(newState);
+    useEffect(()=>{
+        let url = 'https://bakent.herokuapp.com/planets';
+        let headers =  {
+            "Access-Control-Allow-Origin":"*",
+            "Content-Type":"application/json"
+        }
+        axios.get(url,headers)
+            .then(res => {
+                if(res.data){
+                    setPlanetList(res.data)
+                    console.log(res);
+                }
+            });
+    },[])
+
+    const removeCurrentPlanet=()=> {
+        setPlanet(null);
     }
 
-    render(){
-        return(
-            <>
-                <Navigation toggleable={1}/>
-                <div className="planets-view">
-                    <div className="planets-panel">
-                        <div className="planets-container">
-                            <div className="star sun">
+    return(
+        <>
+            {planetList?
+                <>
+                    <Navigation toggleable={1}/>
+                    <div className="planets-view">
+                        <div className="planets-panel">
+                            <div className="planets-container">
+                                <div className="star sun">
+                                    {planetList.map((value,index)=>{
+                                        return <div key={index+"orbit"} className="orbit"></div>
+                                    })}
+                                </div>
                                 {planetList.map((value,index)=>{
-                                    return <div key={index+"orbit"} className="orbit"></div>
+                                    return <div  key={index+"planet"} className={"planet"} >
+                                        <div className={"planet-label"}>{value.name}</div>
+                                        <div data-index={value.id} className={"scale-planet planet-"+ value.name} onClick={onClick}></div>
+                                    </div>
                                 })}
                             </div>
-                            {planetList.map((value,index)=>{
-                                return <div data-index={index} key={index+"planet"} className={"planet planet-"+ value.name} onClick={this.onClick}></div>
-                            })}
                         </div>
-                    </div>
-                    <div className="footer">
-                        <div className="footer-text">
-                            <div className="p_f_text" >
-                                Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok
+                        <div className="footer">
+                            <div className="footer-text">
+                                <div className="p_f_text" >
+                                    Lot w Kosmos, ul. Wiejska 45A, 15-351 Białystok
+                                </div>
                             </div>
                         </div>
+                        {planet?
+                            <div className="planet-info-panel">
+                                <div className="close-info-panel" onClick={removeCurrentPlanet}>+</div>
+                                <div className="info-planet-name">{planet.name}</div>
+                                <div className="info-planet-discovery">{planet.description}</div>
+                                <div className="info-planet-orbit">Odległość od słońca: {planet.distanceFromTheSun} km</div>
+                            </div>
+                            :""
+                        }
                     </div>
-                    {this.state.currentPlanet?
-                        <div className="planet-info-panel">
-                            <div className="info-planet-name">{this.state.currentPlanet.name}</div>
-                            <div className="info-planet-discovery">{this.state.currentPlanet.discovery}</div>
-                            <div className="info-planet-day">Here day lasts {this.state.currentPlanet.day}</div>
-                            <div className="info-planet-name-origin">{this.state.currentPlanet.nameOrigin}</div>
-                            <div className="info-planet-orbit">One revolution around Sun takes {this.state.currentPlanet.orbit}</div>
-                        </div>
-                        :""
-                    }
-                </div>
+                </>:""
+            }
 
-            </>
-        );
-    }
+
+        </>
+    );
+
 
 }
 export default PlanetView;

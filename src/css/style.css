@@ -101,80 +101,148 @@
   top: -2313px;
   left: -2313px;
 }
+.planets-panel .planets-container .star .orbit:nth-child(9) {
+  width: 5620px;
+  height: 5620px;
+  top: -2613px;
+  left: -2613px;
+}
 .planets-panel .planets-container .planet {
   z-index: 2;
   width: 180px;
   height: 180px;
-  background: grey;
   border-radius: 50%;
   margin-left: 120px;
-  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(2) {
+.planets-panel .planets-container .planet:nth-child(2) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.035);
   background: #727272;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(2):hover {
+.planets-panel .planets-container .planet:nth-child(2) .scale-planet:hover {
   transform: scale(0.042);
 }
-.planets-panel .planets-container .planet:nth-child(3) {
+.planets-panel .planets-container .planet:nth-child(3) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.085);
   background: #B0661B;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(3):hover {
+.planets-panel .planets-container .planet:nth-child(3) .scale-planet:hover {
   transform: scale(0.102);
 }
-.planets-panel .planets-container .planet:nth-child(4) {
+.planets-panel .planets-container .planet:nth-child(4) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.09);
   background: #395B78;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(4):hover {
+.planets-panel .planets-container .planet:nth-child(4) .scale-planet:hover {
   transform: scale(0.108);
 }
-.planets-panel .planets-container .planet:nth-child(5) {
+.planets-panel .planets-container .planet:nth-child(5) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.05);
   background: #CC6B32;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(5):hover {
+.planets-panel .planets-container .planet:nth-child(5) .scale-planet:hover {
   transform: scale(0.06);
 }
-.planets-panel .planets-container .planet:nth-child(6) {
+.planets-panel .planets-container .planet:nth-child(6) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(1);
   background: #757475;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(6):hover {
+.planets-panel .planets-container .planet:nth-child(6) .scale-planet:hover {
   transform: scale(1.2);
 }
-.planets-panel .planets-container .planet:nth-child(7) {
+.planets-panel .planets-container .planet:nth-child(7) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.85);
   background: #BEB598;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(7):hover {
+.planets-panel .planets-container .planet:nth-child(7) .scale-planet:hover {
   transform: scale(1.02);
 }
-.planets-panel .planets-container .planet:nth-child(8) {
+.planets-panel .planets-container .planet:nth-child(8) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.36);
   background: #C9EFF2;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(8):hover {
+.planets-panel .planets-container .planet:nth-child(8) .scale-planet:hover {
   transform: scale(0.432);
 }
-.planets-panel .planets-container .planet:nth-child(9) {
+.planets-panel .planets-container .planet:nth-child(9) .scale-planet {
+  width: 180px;
+  height: 180px;
   transform: scale(0.35);
   background: #2766BB;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.planets-panel .planets-container .planet:nth-child(9):hover {
+.planets-panel .planets-container .planet:nth-child(9) .scale-planet:hover {
   transform: scale(0.42);
+}
+.planets-panel .planets-container .planet:nth-child(10) .scale-planet {
+  width: 180px;
+  height: 180px;
+  transform: scale(0.05);
+  background: #613b0a;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.planets-panel .planets-container .planet:nth-child(10) .scale-planet:hover {
+  transform: scale(0.06);
+}
+.planets-panel .planets-container .planet .planet-label {
+  text-align: center;
+  position: relative;
+  top: -20px;
+  color: white;
+  font-size: 30px;
 }
 
 .planet-info-panel {
+  position: relative;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 600px;
   height: 200px;
   color: white;
+  margin: 50px auto;
+  border: dashed 2px #5c5c5c;
+}
+.planet-info-panel .close-info-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 40px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  user-select: none;
 }
 .planet-info-panel .info-planet-name {
   text-transform: uppercase;
@@ -185,7 +253,7 @@
   margin-top: 5px;
   font-size: 12px;
   margin-bottom: 15px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
 }
 .planet-info-panel .info-planet-day {
   margin-top: 5px;
@@ -461,11 +529,9 @@
   justify-content: center;
   align-items: center;
   transition: 0.4s;
-  border-radius: 10px;
 }
 .shopping-cart .summary .buy-button:hover {
   background: rgba(224, 68, 11, 0.5);
-  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
