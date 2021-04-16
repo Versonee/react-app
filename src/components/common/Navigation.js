@@ -29,7 +29,6 @@ class Navigation extends Component{
         return this.setState(prevState);
     }
     logoutUser = () => {
-        console.log("user został wylogowany");
         window.sessionStorage.removeItem("user");
         window.location.href = "/";
     }
