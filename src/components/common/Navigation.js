@@ -28,6 +28,11 @@ class Navigation extends Component{
         prevState.toggle = !prevState.toggle;
         return this.setState(prevState);
     }
+    logoutUser = () => {
+        console.log("user został wylogowany");
+        window.sessionStorage.removeItem("user");
+        window.location.href = "/";
+    }
     render(){
         return(
             <div className={"navbar toggle-"+this.state.toggle}>
@@ -37,7 +42,7 @@ class Navigation extends Component{
                         <Link to="/planets"><div className="nav-item"><PlanetIcon/></div></Link>
                         <Link to="/profile"><div className="nav-item"><ProfileIcon/></div></Link>
                         <Link to="/flights"><div className="nav-item"><FlightIcon/></div></Link>
-                        {this.state.isUserLogged?<Link to="/"><div className="nav-item"><LogoutIcon/></div></Link>:''}
+                        {this.state.isUserLogged?<Link><div className="nav-item" onClick={this.logoutUser}><LogoutIcon/></div></Link>:''}
                     </div>
                 </div>
                 {this.state.toggleable ?
