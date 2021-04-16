@@ -26,8 +26,8 @@ export default function ProfileView(props){
                     </div>
                     <ShoppingCart removeTrigger={props.removeTrigger} shopList={props.shopList}/>
                     <div className="history">
-                        <div className="description">Transaction history</div>
-                        <div className="empty-message">No data about previous transactions.</div>
+                        <div className="description">Historia transakcji</div>
+                        <div className="empty-message">Brak poprzednich transakcji.</div>
                     </div>
                 </div>
                 </div>
