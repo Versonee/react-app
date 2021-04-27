@@ -1,6 +1,6 @@
-body{
+body {
   color: white;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 16px;
 }
 
@@ -337,7 +337,7 @@ body{
   flex-direction: column;
 }
 .profile-view .history {
-  width: 50%;
+  width: 80%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -354,7 +354,7 @@ body{
   font-size: 18px;
 }
 .profile-view .user-info {
-  width: 50%;
+  width: 80%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -420,7 +420,7 @@ body{
 
 .shopping-cart {
   display: flex;
-  width: 50%;
+  width: 80%;
   flex-direction: column;
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -455,7 +455,7 @@ body{
   display: flex;
   align-self: center;
   justify-content: center;
-  color: rgba(0, 0, 0, 0.5);
+  color: #e0440b;
 }
 .shopping-cart .shop-items .item .to {
   width: 20%;
@@ -512,7 +512,7 @@ body{
   margin-right: 20px;
 }
 .shopping-cart .summary .total-cost .description {
-  color: rgba(0, 0, 0, 0.5);
+  color: #e0440b;
   margin-right: 5px;
 }
 .shopping-cart .summary .total-cost .price {

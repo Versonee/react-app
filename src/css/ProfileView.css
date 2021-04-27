@@ -8,7 +8,7 @@
     overflow-y: scroll;
 }
 .profile-wrapper {
-    width: 30%;
+    width: 60%;
     min-height: 100vh;
     background-color: rgb(68, 66, 66);
     margin: 0 auto;
@@ -19,7 +19,10 @@
     border-right: dashed 2px rgba(255, 255, 255, 0.15);
 
 }
-
+.profile-view{
+    width:100%;
+    padding:50px;
+}
 
 
 .footer {

@@ -41,7 +41,7 @@ class Navigation extends Component{
                         <Link to="/planets"><div className="nav-item"><PlanetIcon/></div></Link>
                         <Link to="/profile"><div className="nav-item"><ProfileIcon/></div></Link>
                         <Link to="/flights"><div className="nav-item"><FlightIcon/></div></Link>
-                        {this.state.isUserLogged?<Link><div className="nav-item" onClick={this.logoutUser}><LogoutIcon/></div></Link>:''}
+                        {this.state.isUserLogged?<Link to={"/"}><div className="nav-item" onClick={this.logoutUser}><LogoutIcon/></div></Link>:''}
                     </div>
                 </div>
                 {this.state.toggleable ?

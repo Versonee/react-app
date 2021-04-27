@@ -14,6 +14,7 @@ import User from "./User";
 export default function App() {
     const [user, setUserState] = useState(JSON.parse(window.sessionStorage.getItem("user")) || '');
     const [shopList,setShopList] = useState(JSON.parse(window.localStorage.getItem("shopping-card-list")) || []);
+
     const updateUser =  (data) => {
         setUserState(new User(
             data.login,
@@ -28,6 +29,10 @@ export default function App() {
         window.sessionStorage.setItem("user",JSON.stringify(user));
     })
     const addToCart = (item) => {
+        if(!user) {
+            console.log(1);
+            return;
+        }
         let newShopList = shopList;
         newShopList.push(item);
         setShopList(newShopList);
@@ -45,7 +50,7 @@ export default function App() {
         <Router>
             <Route exact path="/" render={()=><MainView/>}/>
             <Route exact path="/planets" render={()=><PlanetView/>}/>
-            <Route exact path="/flights" render={()=><FlightsView addCardTrigger={addToCart}/>}/>
+            <Route exact path="/flights" render={()=><FlightsView addCardTrigger={addToCart} userExists={!!user}/>}/>
             <Route exact path="/profile" render={()=><ProfileView user={user} removeTrigger={removeFromCart} shopList={shopList}/>}/>
             <Route exact path="/settings" render={()=><SettingsView/>}/>
             <Route exact path="/favourite" render={()=><FavouriteView/>}/>

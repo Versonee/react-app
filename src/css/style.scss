@@ -238,7 +238,7 @@ body{
     flex-direction: column;
     //overflow-y: scroll;
     .history{
-        width:50%;
+        width:80%;
         padding:20px;
         display: flex;
         flex-direction: column;
@@ -255,7 +255,7 @@ body{
         }
     }
     .user-info{
-        width:50%;
+        width:80%;
         padding:20px;
         display: flex;
         flex-direction: column;
@@ -326,7 +326,7 @@ body{
 
 .shopping-cart{
     display: flex;
-    width:50%;
+    width:80%;
     flex-direction: column;
     box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.1);
     padding:20px;
@@ -358,7 +358,7 @@ body{
                 display: flex;
                 align-self:center;
                 justify-content: center;
-                color:rgba(0,0,0,0.5);
+                color:rgba($complementary, 1);
             }
             .to{
                 width:20%;
@@ -416,7 +416,7 @@ body{
             justify-content: flex-end;
             margin-right: 20px;
             .description{
-                color:rgba(0,0,0,0.5);
+                color:rgba($complementary, 1);
                 margin-right:5px;
             }
             .price{

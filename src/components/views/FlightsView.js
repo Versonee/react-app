@@ -12,8 +12,12 @@ export default class FlightsView extends Component {
         seats: 0
     }
 
-    handleClick = (startPlanet, endPlanet) =>
-        toast.success("Dodano do koszyka lot z " + startPlanet + " do " + endPlanet, {
+    handleClick = (startPlanet, endPlanet) =>{
+        let message="Dodano do koszyka lot z " + startPlanet + " do " + endPlanet;
+        if(!this.props.userExists) {
+            message = "Aby dodać produkt do koszyka musisz się zalogować!"
+        }
+        toast.success(message, {
             position: "top-left",
             autoClose: 5000,
             hideProgressBar: false,
@@ -23,6 +27,8 @@ export default class FlightsView extends Component {
             progress: undefined,
             className: "my-toast",
         });
+
+    }
 
     componentDidMount() {
         axios.get("https://bakent.herokuapp.com/flights")
