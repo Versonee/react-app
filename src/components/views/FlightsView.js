@@ -12,11 +12,11 @@ export default class FlightsView extends Component {
         seats: 0
     }
 
-    handleClick = (startPlanet, endPlanet) =>{
+    handleClick = (startPlanet, endPlanet, flight) =>{
         let message="Dodano do koszyka lot z " + startPlanet + " do " + endPlanet;
-        if(!this.props.userExists) {
-            message = "Aby dodać produkt do koszyka musisz się zalogować!"
-        }
+        if(!this.props.userExists) {message = "Aby dodać produkt do koszyka musisz się zalogować!"}
+        else{this.props.addCardTrigger(flight);}
+
         toast.success(message, {
             position: "top-left",
             autoClose: 5000,
@@ -101,8 +101,7 @@ export default class FlightsView extends Component {
                                         return (
                                             <tr className="flights-row" key={"flight-" + flight.id}>
                                                 <td onClick={() => {
-                                                    this.props.addCardTrigger(flight);
-                                                    this.handleClick(flight.portLink.startingPort.planet.name, flight.portLink.endPort.planet.name);
+                                                    this.handleClick(flight.portLink.startingPort.planet.name, flight.portLink.endPort.planet.name, flight);
                                                 }}
                                                     className="outer-cell left"><i className="fas fa-plus-circle"/>
                                                 </td>

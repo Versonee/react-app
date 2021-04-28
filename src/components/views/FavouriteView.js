@@ -1,5 +1,4 @@
 import Navigation from "../common/Navigation";
-import React, {Component} from "react";
 import '../../css/Favourite.css';
 
 

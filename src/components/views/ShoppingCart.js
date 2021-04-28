@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router";
 
 const ShoppingCart = (props) =>{
     const [shopList,setShopList] = useState(props.shopList || []);
+    let history = useHistory();
     // const generateItem = () =>{
     //     let newShopItems=shopList;
     //     newShopItems.push(new ShopItem("a",10, ));
@@ -22,7 +24,7 @@ const ShoppingCart = (props) =>{
         props.removeTrigger(shopList);
     }
     const createOrder=()=>{
-        console.log("złożono zamówienie");
+        history.push("/payment");
     }
     return(
         <div className="shopping-cart">

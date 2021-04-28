@@ -10,6 +10,7 @@ import FavouriteView from "./components/views/FavouriteView";
 import LoginView from "./components/views/LoginView";
 import RegisterView from "./components/views/RegisterView";
 import User from "./User";
+import PaymentView from "./components/views/PaymentView";
 
 export default function App() {
     const [user, setUserState] = useState(JSON.parse(window.sessionStorage.getItem("user")) || '');
@@ -39,6 +40,11 @@ export default function App() {
         window.localStorage.setItem("shopping-card-list",JSON.stringify([...newShopList]));
     }
 
+    const updateCart = (list) =>{
+        setShopList(list);
+        console.log(list);
+        window.localStorage.setItem("shopping-card-list",JSON.stringify([...shopList]));
+    }
     const removeFromCart = (items) => {
         // let newShopList = shopList;
         // newShopList.splice(newShopList.indexOf(item), 1);
@@ -53,6 +59,7 @@ export default function App() {
             <Route exact path="/flights" render={()=><FlightsView addCardTrigger={addToCart} userExists={!!user}/>}/>
             <Route exact path="/profile" render={()=><ProfileView user={user} removeTrigger={removeFromCart} shopList={shopList}/>}/>
             <Route exact path="/settings" render={()=><SettingsView/>}/>
+            <Route exact path="/payment" render={()=><PaymentView updateShopList={updateCart} shopList={shopList}/>}/>
             <Route exact path="/favourite" render={()=><FavouriteView/>}/>
             <Route exact path="/login" render={()=><LoginView updateUser={updateUser}/>}/>
             <Route exact path="/register" render={()=><RegisterView/>}/>
