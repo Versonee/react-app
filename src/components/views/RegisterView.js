@@ -24,6 +24,18 @@ export default function RegisterView(props) {
         window.location.href = "/login";
     }
 
+    let maxDate = () => {
+        var date = new Date();
+        date.setYear(date.getFullYear() - 18);
+        return date.toISOString().split('T')[0];
+    }
+
+    let minDate = () => {
+        var date = new Date();
+        date.setYear(date.getFullYear() - 120);
+        return date.toISOString().split('T')[0];
+    }
+
     const onSubmit = data => {
         const url = 'https://bakent.herokuapp.com/users';
         const user = {
@@ -57,26 +69,26 @@ export default function RegisterView(props) {
                 <div className="register-view">
                     <div className="form-container">
                         <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
-                            <label>First name: </label>
+                            <label>Imię: </label>
                             <input className="register-fields"  ref={register({required:true, minLength:3})} name="firstName"/>
-                            {errors.firstName && "Invalid first name"}
-                            <label>Last name: </label>
+                            {errors.firstName && "Imię musi zawierać co najmniej 3 litery."}
+                            <label>Nazwisko: </label>
                             <input className="register-fields" ref={register({required:true, minLength:3})} name="lastName"/>
-                            {errors.lastName && "Invalid last name"}
-                            <label>Username: </label>
+                            {errors.lastName && "Nazwisko musi zawierać co najmniej 3 litery."}
+                            <label>Nazwa użytkownika: </label>
                             <input className="register-fields" ref={register({required:true, minLength:3})} name="login"/>
-                            {errors.login && "Invalid username"}
-                            <label>Password: </label>
+                            {errors.login && "Nazwa użytkownika musi zawierać co najmniej 3 litery."}
+                            <label>Hasło: </label>
                             <input type ="password" className="register-fields" ref={register({required:true, minLength:3})} name="password"/>
-                            {errors.password && "Invalid password"}
-                            <label>Date of birth: </label>
-                            <input className="register-fields" type="date"  min="1900-01-01" max="2003-12-12" ref={register({required:true})} name="date_of_birth"/>
+                            {errors.password && "Hasło musi zawierać co najmniej 3 litery."}
+                            <label>Data urodzenia: </label>
+                            <input className="register-fields" type="date" min={minDate()} max={maxDate()} ref={register({required:true})} name="date_of_birth"/>
 
                             <div className="gender">
-                                <label>Gender: </label>
-                                <input ref={register({required:true})} type="radio" value="M" name="sex" /> male
-                                <input ref={register({required:true})} type="radio" value="K" name="sex" /> female
-                                {errors.sex && "Sex required"}
+                                <label>Płeć: </label>
+                                <input ref={register({required:true})} type="radio" value="M" name="sex" /> mężczyzna
+                                <input ref={register({required:true})} type="radio" value="K" name="sex" /> kobieta
+                                {errors.sex && "Podaj płeć."}
                             </div>
                             <div className="register-button">
                                 <button >Zarejestruj się</button>
