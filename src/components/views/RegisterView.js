@@ -20,16 +20,9 @@ export default function RegisterView(props) {
         draggable: true,
         progress: undefined,
     })
-    handleClickSuccess = () =>
-        toast.success("Dodano poprawnie użytkownika!" , {
-            position: "top-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+    handleClickSuccess = () => {
+        window.location.href = "/login";
+    }
 
     const onSubmit = data => {
         const url = 'https://bakent.herokuapp.com/users';
