@@ -135,8 +135,7 @@ export default class FlightsView extends Component {
                         </div>
                     </div>
                     <div className="flights-btns">
-                        <button className="flights-order">ZAMÓW</button>
-                        <i className="fas fa-shopping-cart"></i>
+                        <div onClick={() => window.location.href="/profile"}><i className="fas fa-shopping-cart"></i></div>
                     </div>
                 </div>
                 <ToastContainer/>
