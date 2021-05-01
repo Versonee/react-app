@@ -45,7 +45,7 @@
     background-color: white;
 }
 .register-fields{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 180px;
     height: 30px;
     border-radius: 10px;
@@ -53,8 +53,21 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: white;
-
 }
+
+.register-fields:focus {
+  border: none;
+  outline: none;
+}
+
+.register-errors {
+    width: 180px;
+    margin-bottom: 20px;
+}
+.gender {
+    margin-top: 20px;
+}
+
 .nav {
     position: fixed;
     top: 0;

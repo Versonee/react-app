@@ -62,6 +62,13 @@ export default function RegisterView(props) {
             });
     }
 
+    const validatePassword = (value) => {
+        var pattern = new RegExp(
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$"
+        );
+        return pattern.test(value);
+    }
+
     return(
         <div className="register-background">
             <div className="nav"></div>
@@ -71,16 +78,16 @@ export default function RegisterView(props) {
                         <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
                             <label>Imię: </label>
                             <input className="register-fields"  ref={register({required:true, minLength:3})} name="firstName"/>
-                            {errors.firstName && "Imię musi zawierać co najmniej 3 litery."}
+                            <div className="register-errors">{errors.firstName && "Imię musi zawierać co najmniej 3 litery."}</div>
                             <label>Nazwisko: </label>
                             <input className="register-fields" ref={register({required:true, minLength:3})} name="lastName"/>
-                            {errors.lastName && "Nazwisko musi zawierać co najmniej 3 litery."}
+                            <div className="register-errors">{errors.lastName && "Nazwisko musi zawierać co najmniej 3 litery."}</div>
                             <label>Nazwa użytkownika: </label>
                             <input className="register-fields" ref={register({required:true, minLength:3})} name="login"/>
-                            {errors.login && "Nazwa użytkownika musi zawierać co najmniej 3 litery."}
+                            <div className="register-errors">{errors.login && "Nazwa użytkownika musi zawierać co najmniej 3 litery."}</div>
                             <label>Hasło: </label>
-                            <input type ="password" className="register-fields" ref={register({required:true, minLength:3})} name="password"/>
-                            {errors.password && "Hasło musi zawierać co najmniej 3 litery."}
+                            <input type ="password" className="register-fields" ref={register({required:true, minLength:8, validate: validatePassword})} name="password"/>
+                            <div className="register-errors">{errors.password && "Hasło musi zawierać co najmniej 8 znaków, dużą literę, małą literę i cyfrę."}</div>
                             <label>Data urodzenia: </label>
                             <input className="register-fields" type="date" min={minDate()} max={maxDate()} ref={register({required:true})} name="date_of_birth"/>
 
@@ -88,7 +95,7 @@ export default function RegisterView(props) {
                                 <label>Płeć: </label>
                                 <input ref={register({required:true})} type="radio" value="M" name="sex" /> mężczyzna
                                 <input ref={register({required:true})} type="radio" value="K" name="sex" /> kobieta
-                                {errors.sex && "Podaj płeć."}
+                                <div className="register-errors">{errors.sex && "Podaj płeć."}</div>
                             </div>
                             <div className="register-button">
                                 <button >Zarejestruj się</button>
