@@ -5,6 +5,13 @@ import '../../css/PaymentView.css';
 
 export default function PaymentView(props){
     let history = useHistory();
+    let discountCodes = [
+        'KAROLINA',
+        'MATEUSZ',
+        'KAMIL',
+        'URSZULA'
+    ];
+    const [discount, setDiscount] = useState(0);
     const [shopList] = useState(props.shopList || []);
     const handlePaymentButton = () =>{
         props.updateShopList(JSON.parse( "[]"));
@@ -15,7 +22,11 @@ export default function PaymentView(props){
         shopList.forEach((value)=>{
             cost+=parseFloat(value.ticketPrice);
         })
-        return cost;
+        return cost*(1-discount);
+    }
+    const checkCode = (code) =>{
+        if(discountCodes.includes(code.target.value)) setDiscount(0.1);
+        else setDiscount(0);
     }
     return(
         <>
@@ -26,6 +37,7 @@ export default function PaymentView(props){
                         <div className="total-cost">{getTotalCost()}</div>
                         <div className="payment-button" onClick={handlePaymentButton}>zapłać</div>
                     </div>
+                    <input className="discountInput" type="text" onChange={checkCode} placeholder="Enter discount code"/>
                 </div>
             </div>
         </>

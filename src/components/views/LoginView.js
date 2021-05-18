@@ -23,7 +23,7 @@ const LoginView = (props) =>{
             .then(res => {
                 if(res.data){
                     props.updateUser(res.data);
-                    console.log(res);
+                    // console.log(res);
                     history.push('/profile');
                 }else{
                     setLogStatus(false);
