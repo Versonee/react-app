@@ -44,13 +44,13 @@ export default class FlightsView extends Component {
             });
     }
 
-    setStations() {
-        this.state.flights.map((flight, index) => {
-            if (!startPorts.has(flight.portLink.startingPort.name)) {
-                startPorts.add(flight.portLink.startingPort.name);
-            }
-        });
-    }
+    // setStations() {
+    //     this.state.flights.map((flight, index) => {
+    //         if (!startPorts.has(flight.portLink.startingPort.name)) {
+    //             startPorts.add(flight.portLink.startingPort.name);
+    //         }
+    //     });
+    // }
 
     render() {
         return (
@@ -105,7 +105,7 @@ export default class FlightsView extends Component {
 
                             </div>
                             <button onClick={() =>
-                                axios.get(`http://bakent.herokuapp.com/flights/${document.getElementById("startingPort").value}/${document.getElementById("endingPort").value}/${document.getElementById("fromPrice").value}/${document.getElementById("toPrice").value}/${document.getElementById("startDate").value}/${document.getElementById("endDate").value}`)
+                                axios.get(`https://bakent.herokuapp.com/flights/${document.getElementById("startingPort").value}/${document.getElementById("endingPort").value}/${document.getElementById("fromPrice").value}/${document.getElementById("toPrice").value}/${document.getElementById("startDate").value}/${document.getElementById("endDate").value}`)
                                     .then(res => {
                                         startPorts = new Set();
                                         endPorts = new Set();
