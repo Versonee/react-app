@@ -30,6 +30,7 @@ class Navigation extends Component{
     }
     logoutUser = () => {
         window.sessionStorage.removeItem("user");
+        window.localStorage.setItem("shopping-card-list", "[]");
         window.location.href = "/";
     }
     render(){
