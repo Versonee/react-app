@@ -50,4 +50,5 @@
 }
 .payment-button:hover{
     background: rgba(224, 68, 11, 0.5);
+    cursor: pointer;
  }
