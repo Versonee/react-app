@@ -44,6 +44,17 @@ export default class FlightsView extends Component {
             });
     }
 
+    getDivId(id) {
+        return id+"taken-seats";
+    }
+
+    getNumberOfTakenSeats(id) {
+        axios.get("http://bakent.herokuapp.com/tickets/flight/" + id + "/count")
+            .then(res => {
+                document.getElementById(id + "taken-seats").innerText = res.data;
+            });
+    }
+
     // setStations() {
     //     this.state.flights.map((flight, index) => {
     //         if (!startPorts.has(flight.portLink.startingPort.name)) {
@@ -159,7 +170,7 @@ export default class FlightsView extends Component {
                                                 <td className="info-cell">
                                                     <div className="flights-table-txt">{flight.ticketPrice}</div>
                                                 </td>
-                                                <td className="info-cell">{this.state.seats}/{flight.maxSize}</td>
+                                                <td className="info-cell"><div id={this.getDivId(flight.id)} style={{display: "inline-block"}}></div>{this.getNumberOfTakenSeats(flight.id)}/{flight.maxSize}</td>
                                                 <td className="outer-cell right"/>
                                             </tr>
                                         )
