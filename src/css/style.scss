@@ -442,6 +442,7 @@ body{
             transition: .4s;
             &:hover{
                 background: rgba($complementary,.5);
+                cursor: pointer;
             }
         }
     }
