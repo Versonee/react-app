@@ -66,7 +66,7 @@ export default function PaymentView(props){
                     login: user.login,
                     password: user.password,
                     sex: user.sex,
-                    id: 2
+                    id: user.id
                 }
             }
 
