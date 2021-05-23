@@ -66,14 +66,14 @@ export default function PaymentView(props){
                     login: user.login,
                     password: user.password,
                     sex: user.sex,
-                    id: 2
+                    id: user.id
                 }
             }
 
             axios.post(url, data, headers);
         });
-
-        props.updateShopList(JSON.parse("[]"));
+        props.updateShopList(JSON.parse( "[]"));
+        window.localStorage.setItem("shopping-card-list",JSON.stringify([]));
         alert("Dziękujemy za zakup.");
         history.push("/profile");
     }

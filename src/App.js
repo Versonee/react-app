@@ -18,6 +18,7 @@ export default function App() {
 
     const updateUser =  (data) => {
         setUserState(new User(
+            data.id,
             data.login,
             data.password,
             data.sex,
