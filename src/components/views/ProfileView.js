@@ -10,7 +10,7 @@ function getPreviousUserFlights() {
     user = JSON.parse(user);
 
     if (user.id) {
-        axios.get("http://bakent.herokuapp.com/tickets/user/" + user.id)
+        axios.get("https://bakent.herokuapp.com/tickets/user/" + user.id)
                 .then(res => {
                     var display = "";
                     if (res.data !== null && res.data !== "" && res.data.length !== 0) {

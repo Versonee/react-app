@@ -49,7 +49,7 @@ export default class FlightsView extends Component {
     }
 
     getNumberOfTakenSeats(id) {
-        axios.get("http://bakent.herokuapp.com/tickets/flight/" + id + "/count")
+        axios.get("https://bakent.herokuapp.com/tickets/flight/" + id + "/count")
             .then(res => {
                 document.getElementById(id + "taken-seats").innerText = res.data;
             });
