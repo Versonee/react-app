@@ -13,10 +13,17 @@ export default class FlightsView extends Component {
         seats: 0
     }
 
+    thereIsNoFreeSeats(flight) {
+        var currentlyTakenSeats = parseInt(document.getElementById(flight.id + "taken-seats").innerText);
+        return currentlyTakenSeats === flight.maxSize;
+    }
+
     handleClick = (startPlanet, endPlanet, flight) => {
         let message = "Dodano do koszyka lot z " + startPlanet + " do " + endPlanet;
         if (!this.props.userExists) {
             message = "Aby dodać produkt do koszyka musisz się zalogować!"
+        } else if (this.thereIsNoFreeSeats(flight)) {
+            message = "W tym locie nie ma już wolnych miejsc!"
         } else {
             this.props.addCardTrigger(flight);
         }
