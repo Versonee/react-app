@@ -53,7 +53,6 @@ const ShoppingCart = (props) =>{
                     <div className="total-cost">
                         <div className="description">Suma:</div>
                         <div className="price">{getTotalCost()}</div>
-                        <div className="currency">PLN</div>
                     </div>
                     <div className="buy-button" onClick={createOrder}>płacę</div>
                 </div>

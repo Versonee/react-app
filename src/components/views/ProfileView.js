@@ -14,7 +14,7 @@ function getPreviousUserFlights() {
                 .then(res => {
                     var display = "";
                     if (res.data !== null && res.data !== "" && res.data.length !== 0) {
-                        display = '<div class="shopping-cart"><div class="shop-items">'
+                        display = '<div class="shopping-cart" style="width:95%; margin-top:0"><div class="shop-items">'
                         res.data.forEach((item) => {
                             console.log(item);
                             display += '<div class="item"><div class="arrow">z</div>'+
