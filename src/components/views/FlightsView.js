@@ -10,6 +10,7 @@ let endPorts = new Set();
 export default class FlightsView extends Component {
     state = {
         flights: [],
+        filteredFlights: [],
         seats: 0
     }
 
@@ -27,7 +28,6 @@ export default class FlightsView extends Component {
         } else {
             this.props.addCardTrigger(flight);
         }
-
         toast.success(message, {
             position: "top-left",
             autoClose: 5000,
@@ -46,13 +46,14 @@ export default class FlightsView extends Component {
         axios.get("https://bakent.herokuapp.com/flights")
             .then(res => {
                 this.setState({
-                    flights: res.data
+                    flights: res.data,
+                    filteredFlights: res.data
                 })
             });
     }
 
     getDivId(id) {
-        return id+"taken-seats";
+        return id + "taken-seats";
     }
 
     getNumberOfTakenSeats(id) {
@@ -62,15 +63,26 @@ export default class FlightsView extends Component {
             });
     }
 
-    // setStations() {
-    //     this.state.flights.map((flight, index) => {
-    //         if (!startPorts.has(flight.portLink.startingPort.name)) {
-    //             startPorts.add(flight.portLink.startingPort.name);
-    //         }
-    //     });
-    // }
 
     render() {
+        const notifyFlightFound = (x) => toast.dark('‍✈️Znaleziono ' + x + ' lotów spełniające Twoje kryteria.', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+        const notifyFlightNotFound = () => toast.error('💥 Brak lotów o tych kryteriach, powrót do głównej listy lotów', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         return (
             <>
                 <Navigation toggleable={1}/>
@@ -79,7 +91,7 @@ export default class FlightsView extends Component {
                         <div className="flights-filtering">
                             <div className="flights-filtering-selectors">
                                 <select id="startingPort" className="flights-selector" name="start-port">
-                                    <option value="">-Wybierz stację startową-</option>
+                                    <option hidden value="">Wybierz stację startową</option>
                                     {
                                         this.state.flights.map((flight, index) => {
                                             if (!startPorts.has(flight.portLink.startingPort.name)) {
@@ -88,12 +100,11 @@ export default class FlightsView extends Component {
                                                     key={"start-port-" + index}>{flight.portLink.startingPort.name}</option>
                                             }
                                         })
-
                                     }
                                 </select>
 
                                 <select id="endingPort" className="flights-selector" name="end-port">
-                                    <option value="">-Wybierz stację końcową-</option>
+                                    <option hidden value="">Wybierz stację końcową</option>
                                     {
                                         this.state.flights.map((flight, index) => {
                                             if (!endPorts.has(flight.portLink.endPort.name)) {
@@ -104,32 +115,49 @@ export default class FlightsView extends Component {
                                         })
                                     }
                                 </select>
-                                <input id="startDate" className="flights-selector" type="date" name="start-date"/>
-                                <input id="endDate" className="flights-selector" type="date" name="end-date"/>
+                                <input defaultValue="2021-01-01" id="startDate" className="flights-selector" type="date"
+                                       name="start-date"/>
+                                <input defaultValue="2040-01-01" id="endDate" className="flights-selector" type="date"
+                                       name="end-date"/>
                                 <select className="flights-selector" name="flight-price" id="fromPrice">
-                                    <option value="price0">Od</option>
+                                    <option hidden value="0">Od</option>
                                     <option value="0">0</option>
                                     <option value="50000">50000</option>
                                     <option value="100000">100000</option>
                                     <option value="200000">200000</option>
                                 </select>
                                 <select className="flights-selector" name="flight-price" id="toPrice">
-                                    <option value="price0">Do</option>
+                                    <option hidden value="15000000">Do</option>
                                     <option value="50000">50000</option>
                                     <option value="100000">100000</option>
                                     <option value="500000">500000</option>
-                                    <option value="1500000">500000+</option>
+                                    <option value="15000000">500000+</option>
                                 </select>
 
                             </div>
                             <button onClick={() =>
-                                axios.get(`https://bakent.herokuapp.com/flights/${document.getElementById("startingPort").value}/${document.getElementById("endingPort").value}/${document.getElementById("fromPrice").value}/${document.getElementById("toPrice").value}/${document.getElementById("startDate").value}/${document.getElementById("endDate").value}`)
+                                axios.get(`https://bakent.herokuapp.com/flights`)
                                     .then(res => {
                                         startPorts = new Set();
                                         endPorts = new Set();
                                         this.setState({
-                                            flights: res.data,
+                                            filteredFlights: res.data.filter(value =>
+                                                value.portLink.startingPort.name.startsWith(document.getElementById("startingPort").value) &&
+                                                value.portLink.endPort.name.startsWith(document.getElementById("endingPort").value) &&
+                                                value.start_date >= document.getElementById("startDate").value &&
+                                                value.end_date <= document.getElementById("endDate").value &&
+                                                value.ticketPrice >= document.getElementById("fromPrice").value &&
+                                                value.ticketPrice <= document.getElementById("toPrice").value
+                                            ),
                                         })
+                                        if(this.state.filteredFlights.length === 0){
+                                            notifyFlightNotFound();
+                                            this.setState({
+                                                filteredFlights: res.data,
+                                            })
+                                        } else {
+                                            notifyFlightFound(this.state.filteredFlights.length);
+                                        }
                                     })
                             }>
                                 SZUKAJ
@@ -150,41 +178,46 @@ export default class FlightsView extends Component {
                                     <td className="outer-cell"/>
                                 </tr>
                                 </thead>
+
                                 <tbody>
                                 {
-                                    this.state.flights.map(flight => {
-                                        return (
-                                            <tr className="flights-row" key={"flight-" + flight.id}>
-                                                <td onClick={() => {
-                                                    this.handleClick(flight.portLink.startingPort.planet.name, flight.portLink.endPort.planet.name, flight);
-                                                }}
-                                                    className="outer-cell left"><i className="fas fa-plus-circle"/>
-                                                </td>
-                                                <td className="info-cell">
-                                                    <div
-                                                        className="flights-table-txt">{flight.portLink.startingPort.planet.name}, {flight.portLink.startingPort.name}</div>
-                                                </td>
-                                                <td className="info-cell">
-                                                    <div
-                                                        className="flights-table-txt">{flight.portLink.endPort.planet.name}, {flight.portLink.endPort.name}</div>
-                                                </td>
-                                                <td className="info-cell">
-                                                    <div className="flights-table-txt">{flight.start_date}</div>
-                                                </td>
-                                                <td className="info-cell">
-                                                    <div className="flights-table-txt">{flight.end_date}</div>
-                                                </td>
-                                                <td className="info-cell">
-                                                    <div className="flights-table-txt">{flight.ticketPrice}</div>
-                                                </td>
-                                                <td className="info-cell"><div id={this.getDivId(flight.id)} style={{display: "inline-block"}}></div>{this.getNumberOfTakenSeats(flight.id)}/{flight.maxSize}</td>
-                                                <td className="outer-cell right"/>
-                                            </tr>
-                                        )
-                                    })
+                                        this.state.filteredFlights.map(flight => {
+                                            return (
+                                                <tr className="flights-row" key={"flight-" + flight.id}>
+                                                    <td onClick={() => {
+                                                        this.handleClick(flight.portLink.startingPort.planet.name, flight.portLink.endPort.planet.name, flight);
+                                                    }}
+                                                        className="outer-cell left"><i className="fas fa-plus-circle"/>
+                                                    </td>
+                                                    <td className="info-cell">
+                                                        <div
+                                                            className="flights-table-txt">{flight.portLink.startingPort.planet.name}, {flight.portLink.startingPort.name}</div>
+                                                    </td>
+                                                    <td className="info-cell">
+                                                        <div
+                                                            className="flights-table-txt">{flight.portLink.endPort.planet.name}, {flight.portLink.endPort.name}</div>
+                                                    </td>
+                                                    <td className="info-cell">
+                                                        <div className="flights-table-txt">{flight.start_date}</div>
+                                                    </td>
+                                                    <td className="info-cell">
+                                                        <div className="flights-table-txt">{flight.end_date}</div>
+                                                    </td>
+                                                    <td className="info-cell">
+                                                        <div className="flights-table-txt">{flight.ticketPrice}</div>
+                                                    </td>
+                                                    <td className="info-cell">
+                                                        <div id={this.getDivId(flight.id)}
+                                                             style={{display: "inline-block"}}></div>
+                                                        {this.getNumberOfTakenSeats(flight.id)}/{flight.maxSize}</td>
+                                                    <td className="outer-cell right"/>
+                                                </tr>
+                                            )
+                                        })
                                 }
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                     <div className="flights-btns">
@@ -198,5 +231,4 @@ export default class FlightsView extends Component {
         )
     }
 }
-
 
