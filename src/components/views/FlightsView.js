@@ -7,6 +7,7 @@ import {toast, ToastContainer} from "react-toastify";
 
 let startPorts = new Set();
 let endPorts = new Set();
+let tmpPorts = [];
 export default class FlightsView extends Component {
     state = {
         flights: [],
@@ -63,7 +64,6 @@ export default class FlightsView extends Component {
             });
     }
 
-
     render() {
         const notifyFlightFound = (x) => toast.dark('‍✈️Znaleziono ' + x + ' lotów spełniające Twoje kryteria.', {
             position: "top-right",
@@ -94,6 +94,7 @@ export default class FlightsView extends Component {
                                     <option hidden value="">Wybierz stację startową</option>
                                     {
                                         this.state.flights.map((flight, index) => {
+                                            console.log("jestem tu w mapie " + this.state.flights.length)
                                             if (!startPorts.has(flight.portLink.startingPort.name)) {
                                                 startPorts.add(flight.portLink.startingPort.name);
                                                 return <option
@@ -152,6 +153,8 @@ export default class FlightsView extends Component {
                                         })
                                         if(this.state.filteredFlights.length === 0){
                                             notifyFlightNotFound();
+                                            startPorts = new Set();
+                                            endPorts = new Set();
                                             this.setState({
                                                 filteredFlights: res.data,
                                             })
