@@ -4,6 +4,7 @@ import axios from "axios";
 import {useHistory} from "react-router";
 import '../../css/LoginView.css';
 import {Link} from "react-router-dom";
+import Navigation from "../common/Navigation";
 const LoginView = (props) =>{
     const { register, errors, handleSubmit } = useForm();
     const [logStatus, setLogStatus] = useState(null);
@@ -33,7 +34,7 @@ const LoginView = (props) =>{
     return(
         <>
             <div className="login-background">
-                <div className="nav"></div>
+                <Navigation toggleable={0}/>
                 <div className="login-wrapper">
                     <div className="login-view">
                         <div className="form-container">
@@ -45,7 +46,7 @@ const LoginView = (props) =>{
                                     {errors.username && "Błędna nazwa użytkownika"}
                                 <label>Hasło: </label>
                                     <div >
-                                        <input className="login-fields" ref={register({required: true,minLength: 3})} name="password"/>
+                                        <input type="password" className="login-fields" ref={register({required: true,minLength: 3})} name="password"/>
                                     </div>
                                     {errors.password && "Błędne hasło"}
                                 <div className="login-button">

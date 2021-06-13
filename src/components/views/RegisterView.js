@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../../css/RegisterView.css';
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer} from "react-toastify";
+import Navigation from "../common/Navigation";
 
 export default function RegisterView(props) {
     const { register,errors, handleSubmit } = useForm();
@@ -71,7 +72,7 @@ export default function RegisterView(props) {
 
     return(
         <div className="register-background">
-            <div className="nav"></div>
+            <Navigation toggleable={0}/>
             <div className="register-wrapper">
                 <div className="register-view">
                     <div className="form-container">
